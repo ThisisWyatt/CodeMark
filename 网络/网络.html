@@ -1,0 +1,3643 @@
+<!doctype html>
+<html style='font-size:16px !important'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <title>网络</title>
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        bottom: 0px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        font-size: 1rem;
+        line-height: 1.42857;
+        overflow-x: hidden;
+        background: inherit;
+        tab-size: 4;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 40px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 2;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px !important;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+        user-select: none;
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background: inherit;
+        position: relative !important;
+    }
+
+    .md-diagram-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        background: 0px 0px;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        -webkit-tap-highlight-color: transparent;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            -webkit-print-color-adjust: exact;
+        }
+
+        html.blink-to-pdf {
+            font-size: 13px;
+        }
+
+        .typora-export #write {
+            padding-left: 32px;
+            padding-right: 32px;
+            padding-bottom: 0px;
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.8;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+        vertical-align: initial;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border-width: initial !important;
+        border-style: none !important;
+        border-color: initial !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        background: 0px 0px !important;
+        text-decoration: initial !important;
+        text-shadow: initial !important;
+    }
+
+    .md-inline-math .MathJax_SVG .noError {
+        display: none !important;
+    }
+
+    .html-for-mac .inline-math-svg .MathJax_SVG {
+        vertical-align: 0.2px;
+    }
+
+    .md-math-block .MathJax_SVG_Display {
+        text-align: center;
+        margin: 0px;
+        position: relative;
+        text-indent: 0px;
+        max-width: none;
+        max-height: none;
+        min-height: 0px;
+        min-width: 100%;
+        width: auto;
+        overflow-y: hidden;
+        display: block !important;
+    }
+
+    .MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display {
+        width: auto;
+        margin: inherit;
+        display: inline-block !important;
+    }
+
+    .MathJax_SVG .MJX-monospace {
+        font-family: var(--monospace);
+    }
+
+    .MathJax_SVG .MJX-sans-serif {
+        font-family: sans-serif;
+    }
+
+    .MathJax_SVG {
+        display: inline;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        zoom: 90%;
+        text-indent: 0px;
+        text-align: left;
+        text-transform: none;
+        letter-spacing: normal;
+        word-spacing: normal;
+        overflow-wrap: normal;
+        white-space: nowrap;
+        float: none;
+        direction: ltr;
+        max-width: none;
+        max-height: none;
+        min-width: 0px;
+        min-height: 0px;
+        border: 0px;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .MathJax_SVG * {
+        transition: none 0s ease 0s;
+    }
+
+    .MathJax_SVG_Display svg {
+        vertical-align: middle !important;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    svg[id^="mermaidChart"] {
+        line-height: 1em;
+    }
+
+    mark {
+        background: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+        opacity: 0.3 !important;
+    }
+
+
+    .CodeMirror {
+        height: auto;
+    }
+
+    .CodeMirror.cm-s-inner {
+        background: inherit;
+    }
+
+    .CodeMirror-scroll {
+        overflow: auto hidden;
+        z-index: 3;
+    }
+
+    .CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler {
+        background-color: rgb(255, 255, 255);
+    }
+
+    .CodeMirror-gutters {
+        border-right: 1px solid rgb(221, 221, 221);
+        background: inherit;
+        white-space: nowrap;
+    }
+
+    .CodeMirror-linenumber {
+        padding: 0px 3px 0px 5px;
+        text-align: right;
+        color: rgb(153, 153, 153);
+    }
+
+    .cm-s-inner .cm-keyword {
+        color: rgb(119, 0, 136);
+    }
+
+    .cm-s-inner .cm-atom, .cm-s-inner.cm-atom {
+        color: rgb(34, 17, 153);
+    }
+
+    .cm-s-inner .cm-number {
+        color: rgb(17, 102, 68);
+    }
+
+    .cm-s-inner .cm-def {
+        color: rgb(0, 0, 255);
+    }
+
+    .cm-s-inner .cm-variable {
+        color: rgb(0, 0, 0);
+    }
+
+    .cm-s-inner .cm-variable-2 {
+        color: rgb(0, 85, 170);
+    }
+
+    .cm-s-inner .cm-variable-3 {
+        color: rgb(0, 136, 85);
+    }
+
+    .cm-s-inner .cm-string {
+        color: rgb(170, 17, 17);
+    }
+
+    .cm-s-inner .cm-property {
+        color: rgb(0, 0, 0);
+    }
+
+    .cm-s-inner .cm-operator {
+        color: rgb(152, 26, 26);
+    }
+
+    .cm-s-inner .cm-comment, .cm-s-inner.cm-comment {
+        color: rgb(170, 85, 0);
+    }
+
+    .cm-s-inner .cm-string-2 {
+        color: rgb(255, 85, 0);
+    }
+
+    .cm-s-inner .cm-meta {
+        color: rgb(85, 85, 85);
+    }
+
+    .cm-s-inner .cm-qualifier {
+        color: rgb(85, 85, 85);
+    }
+
+    .cm-s-inner .cm-builtin {
+        color: rgb(51, 0, 170);
+    }
+
+    .cm-s-inner .cm-bracket {
+        color: rgb(153, 153, 119);
+    }
+
+    .cm-s-inner .cm-tag {
+        color: rgb(17, 119, 0);
+    }
+
+    .cm-s-inner .cm-attribute {
+        color: rgb(0, 0, 204);
+    }
+
+    .cm-s-inner .cm-header, .cm-s-inner.cm-header {
+        color: rgb(0, 0, 255);
+    }
+
+    .cm-s-inner .cm-quote, .cm-s-inner.cm-quote {
+        color: rgb(0, 153, 0);
+    }
+
+    .cm-s-inner .cm-hr, .cm-s-inner.cm-hr {
+        color: rgb(153, 153, 153);
+    }
+
+    .cm-s-inner .cm-link, .cm-s-inner.cm-link {
+        color: rgb(0, 0, 204);
+    }
+
+    .cm-negative {
+        color: rgb(221, 68, 68);
+    }
+
+    .cm-positive {
+        color: rgb(34, 153, 34);
+    }
+
+    .cm-header, .cm-strong {
+        font-weight: 700;
+    }
+
+    .cm-del {
+        text-decoration: line-through;
+    }
+
+    .cm-em {
+        font-style: italic;
+    }
+
+    .cm-link {
+        text-decoration: underline;
+    }
+
+    .cm-error {
+        color: red;
+    }
+
+    .cm-invalidchar {
+        color: red;
+    }
+
+    .cm-constant {
+        color: rgb(38, 139, 210);
+    }
+
+    .cm-defined {
+        color: rgb(181, 137, 0);
+    }
+
+    div.CodeMirror span.CodeMirror-matchingbracket {
+        color: rgb(0, 255, 0);
+    }
+
+    div.CodeMirror span.CodeMirror-nonmatchingbracket {
+        color: rgb(255, 34, 34);
+    }
+
+    .cm-s-inner .CodeMirror-activeline-background {
+        background: inherit;
+    }
+
+    .CodeMirror {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .CodeMirror-scroll {
+        height: 100%;
+        outline: 0px;
+        position: relative;
+        box-sizing: content-box;
+        background: inherit;
+    }
+
+    .CodeMirror-sizer {
+        position: relative;
+    }
+
+    .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
+        position: absolute;
+        z-index: 6;
+        display: none;
+    }
+
+    .CodeMirror-vscrollbar {
+        right: 0px;
+        top: 0px;
+        overflow: hidden;
+    }
+
+    .CodeMirror-hscrollbar {
+        bottom: 0px;
+        left: 0px;
+        overflow: hidden;
+    }
+
+    .CodeMirror-scrollbar-filler {
+        right: 0px;
+        bottom: 0px;
+    }
+
+    .CodeMirror-gutter-filler {
+        left: 0px;
+        bottom: 0px;
+    }
+
+    .CodeMirror-gutters {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        padding-bottom: 30px;
+        z-index: 3;
+    }
+
+    .CodeMirror-gutter {
+        white-space: normal;
+        height: 100%;
+        box-sizing: content-box;
+        padding-bottom: 30px;
+        margin-bottom: -32px;
+        display: inline-block;
+    }
+
+    .CodeMirror-gutter-wrapper {
+        position: absolute;
+        z-index: 4;
+        background: 0px 0px !important;
+        border: none !important;
+    }
+
+    .CodeMirror-gutter-background {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        z-index: 4;
+    }
+
+    .CodeMirror-gutter-elt {
+        position: absolute;
+        cursor: default;
+        z-index: 4;
+    }
+
+    .CodeMirror-lines {
+        cursor: text;
+    }
+
+    .CodeMirror pre {
+        border-radius: 0px;
+        border-width: 0px;
+        background: 0px 0px;
+        font-family: inherit;
+        font-size: inherit;
+        margin: 0px;
+        white-space: pre;
+        overflow-wrap: normal;
+        color: inherit;
+        z-index: 2;
+        position: relative;
+        overflow: visible;
+    }
+
+    .CodeMirror-wrap pre {
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+        word-break: normal;
+    }
+
+    .CodeMirror-code pre {
+        border-right: 30px solid transparent;
+        width: fit-content;
+    }
+
+    .CodeMirror-wrap .CodeMirror-code pre {
+        border-right: none;
+        width: auto;
+    }
+
+    .CodeMirror-linebackground {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        z-index: 0;
+    }
+
+    .CodeMirror-linewidget {
+        position: relative;
+        z-index: 2;
+        overflow: auto;
+    }
+
+    .CodeMirror-wrap .CodeMirror-scroll {
+        overflow-x: hidden;
+    }
+
+    .CodeMirror-measure {
+        position: absolute;
+        width: 100%;
+        height: 0px;
+        overflow: hidden;
+        visibility: hidden;
+    }
+
+    .CodeMirror-measure pre {
+        position: static;
+    }
+
+    .CodeMirror div.CodeMirror-cursor {
+        position: absolute;
+        visibility: hidden;
+        border-right: none;
+        width: 0px;
+    }
+
+    .CodeMirror div.CodeMirror-cursor {
+        visibility: hidden;
+    }
+
+    .CodeMirror-focused div.CodeMirror-cursor {
+        visibility: inherit;
+    }
+
+    .cm-searching {
+        background: rgba(255, 255, 0, 0.4);
+    }
+
+    @media print {
+        .CodeMirror div.CodeMirror-cursor {
+            visibility: hidden;
+        }
+    }
+
+
+    ;
+    /* CodeMirror Dracula theme */
+    :root {
+        --bg-color: #fbfbfb;
+        --text-color: #333;
+        --md-char-color: #b4b4b4;
+        --meta-content-color: #757575;
+        --table-border-color: #b4b4b4;
+        --select-text-bg-color: #fbb6b7;
+        --primary-color: #db4d52;
+        --primary-btn-border-color: #be2f34;
+        --primary-btn-text-color: #333;
+        --window-border: 1px solid #16161a;
+        --active-file-bg-color: #16161a;
+        --active-file-text-color: inherit;
+        --active-file-border-color: #757575;
+        --active-search-item-bg-color: #23242b;
+        --side-bar-bg-color: #2e3235;
+        --item-hover-bg-color: #ececec;
+        --item-hover-text-color: inherit;
+        --search-select-text-color: #333;
+        --search-select-bg-color: #db4d5270;
+        --rawblock-edit-panel-bd: #ddd;
+        --monospace: 'Fira Mono', 'Cousine', 'Consolas', monospace;
+        --node-fill: #fbfbfb;
+        --node-border: #0000001a;
+    }
+
+    html, body {
+        font-family: 'Avenir Next LT Pro', 'Lato', sans-serif;
+    }
+
+    body {
+        font-size: 1em;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Avenir Next LT Pro', 'Lato', serif;
+    }
+
+    p {
+        margin: .5rem 0;
+    }
+
+    a {
+        color: #db4d52;
+    }
+
+    del {
+        color: #b4b4b4;
+    }
+
+    mark {
+        padding: 2px;
+        background: #c7f661d3;
+        color: inherit;
+    }
+
+    blockquote {
+        position: relative;
+        margin: 1rem 0 1rem 2rem;
+        /* font-family: 'Open Sans'; */
+        font-family: 'Adelle', 'Times New Roman', serif;
+        color: #827676;
+    }
+
+    blockquote::before {
+        content: '';
+        position: absolute;
+        left: -2rem;
+        height: 100%;
+        width: .25rem;
+        background: #db4d52;
+    }
+
+    code,
+    .md-fences,
+    tt {
+        font-family: 'Fira Mono', 'Cousine', 'Consolas', monospace;
+        font-size: 1rem;
+    }
+
+    code {
+        font-size: .9em;
+        border: 1px solid #0000001a;
+        border-radius: .25rem;
+        padding: 1px .25rem;
+        background: #fafafa;
+    }
+
+    kbd {
+        font-family: 'Fira Mono', 'Cousine', 'Consolas', monospace;
+        font-size: .875rem;
+        border: 2px solid #0000001a;
+        background: #f7f7f7;
+        color: #333;
+        box-shadow: none;
+    }
+
+    hr {
+        border-color: #b4b4b4;
+    }
+
+    table {
+        border: 1px solid #b4b4b4;
+        margin: 1rem 0;
+    }
+
+    table tr:nth-child(2n) {
+        background: #ddd;
+    }
+
+    thead {
+        background: #ddd;
+    }
+
+    td, th {
+        padding: .35rem .7rem;
+        border: 1px solid #b4b4b4;
+    }
+
+    #write {
+        position: static;
+        width: 90%;
+        max-width: 1100px;
+        line-height: 1.6;
+        transform: none;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: auto;
+    }
+
+    #write h3::before, #write h4::before, #write h5::before, #write h6::before {
+        display: none;
+    }
+
+    #write h1::after, #write h2::after, #write h3::after, #write h4::after, #write h5::after, #write h6::after {
+        position: absolute;
+        right: calc(100% + .75em);
+        top: 0;
+        color: #b4b4b4;
+        font-size: 1rem;
+        font-weight: bold;
+        font-variant: 'small-caps';
+    }
+
+    #write h1 {
+        font-size: 1.8rem;
+        margin: 1rem 0;
+    }
+
+    #write h1::after {
+        content: 'H1';
+        top: .87rem;
+    }
+
+    #write h2 {
+        font-size: 1.4rem;
+        margin: .7rem 0;
+    }
+
+    #write h2::after {
+        content: 'H2';
+        top: .43rem;
+    }
+
+    #write h3 {
+        font-size: 1.2rem;
+        margin: .5rem 0;
+    }
+
+    #write h3::after {
+        content: 'H3';
+        top: .2rem;
+    }
+
+    #write h4 {
+        font-size: 1.1rem;
+        margin: .2rem 0;
+    }
+
+    #write h4::after {
+        content: 'H4';
+        top: .07rem;
+    }
+
+    #write h5, #write h6 {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    #write h5::after {
+        content: 'H5';
+    }
+
+    #write h6::after {
+        content: 'H6';
+    }
+
+    #write ol, #write ul {
+        padding-left: 2rem;
+        margin: .5rem 0;
+    }
+
+    #write ol > li, #write ul > li {
+        /* color: #271d83; */
+        color: #db4d52;
+        font-weight: bold;
+    }
+
+    #write ol > li > *, #write ul > li > * {
+        color: #333;
+        font-weight: normal;
+    }
+
+    #write ol > li > *:not(ol):not(ul), #write ul > li > *:not(ol):not(ul) {
+        padding-left: .25rem;
+    }
+
+    #write ul {
+        list-style-type: disc;
+    }
+
+    #write .md-task-list-item > input {
+        -webkit-appearance: initial;
+        display: block;
+        position: absolute;
+        border: 1px solid #b4b4b4;
+        border-radius: .25rem;
+        margin-top: .1rem;
+        margin-left: -1.8rem;
+        height: 1.2rem;
+        width: 1.2rem;
+        transition: background 0.3s;
+    }
+
+    #write .md-task-list-item > input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    #write .md-task-list-item > input:hover {
+        background: #ddd;
+    }
+
+    #write .md-task-list-item > input[checked]::before {
+        content: '';
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        height: 60%;
+        width: 2px;
+        transform: rotate(40deg);
+        background: #333;
+    }
+
+    #write .md-task-list-item > input[checked]::after {
+        content: '';
+        position: absolute;
+        top: 46%;
+        left: 25%;
+        height: 30%;
+        width: 2px;
+        transform: rotate(-40deg);
+        background: #333;
+    }
+
+    #write .md-task-list-item > p {
+        transition: color 0.3s, opacity 0.3s;
+    }
+
+    #write .md-task-list-item.task-list-done > p {
+        color: #b4b4b4;
+        text-decoration: line-through;
+    }
+
+    #write .md-task-list-item.task-list-done > p > .md-emoji {
+        opacity: .5;
+    }
+
+    #write .md-task-list-item.task-list-done > p > .md-link > a {
+        opacity: .6;
+    }
+
+    #write .md-meta-block {
+        background-color: transparent;
+        border-bottom: 1px solid #b4b4b4;
+        padding-bottom: 1rem;
+        opacity: .8;
+    }
+
+    #write .md-table-edit {
+        border-top: 1px solid #b4b4b4;
+        margin-top: -29px !important;
+        padding: 3px 0;
+    }
+
+    #write .md-grid-board a.md-active, #write .md-grid-board a:hover {
+        background: #db4d52;
+        color: #b4b4b4;
+    }
+
+    #write .md-grid-board tr[row='1'] a.md-active, #write .md-grid-board tr[row='1'] a:hover {
+        background: #be2f34;
+        color: #b4b4b4;
+    }
+
+    #write .btn-group .btn + .btn {
+        margin-left: 0;
+    }
+
+    #write .btn-default.active, #write .btn-default.focus, #write .btn-default:active, #write .btn-default:focus, #write .btn-default:hover,
+    .open > #write .btn-default.dropdown-toggle {
+        background: transparent;
+        color: inherit;
+    }
+
+    #write .typora-table-drag-area::after {
+        content: '';
+        position: absolute;
+        border: 2px solid #333;
+        opacity: 0;
+        transition: opacity .4s;
+    }
+
+    #typora-table-row-tracker #write .typora-table-drag-area::after,
+    #typora-table-col-tracker #write .typora-table-drag-area::after {
+        opacity: 1;
+    }
+
+    #typora-table-row-tracker #write .typora-table-drag-area::after {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 100%;
+    }
+
+    #typora-table-col-tracker #write .typora-table-drag-area::after {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 0;
+    }
+
+    #write .md-toc-tooltip {
+        z-index: 10;
+    }
+
+    #write .md-toc-item {
+        font-size: 1.1rem;
+        color: var(--primary-btn-border-color);
+    }
+
+    #write .md-toc-h1 {
+        font-family: 'Adelle', 'Times New Roman', serif;
+        font-size: 1.3rem;
+    }
+
+    #write .md-toc-h2 {
+        font-size: 1.2rem;
+    }
+
+    #write .md-footnote {
+        font-family: 'Adelle', 'Times New Roman', serif;
+        font-size: .8em;
+        border: 1px solid #ddd;
+        padding: 0 4px;
+        background: #f0f0f0;
+        color: #333;
+    }
+
+    #write .md-def-split {
+        min-width: 1ch;
+    }
+
+    #write .md-def-name::before, #write .md-def-name::after {
+        color: #757575;
+    }
+
+    #write .md-image > .md-meta {
+        color: #757575;
+    }
+
+    #write .md-rawblock-tooltip {
+        top: -1.5rem;
+        height: 1.5rem;
+        padding: .25rem;
+    }
+
+    #write .md-search-hit {
+        background: #db4d5230;
+        border-radius: .125rem;
+    }
+
+    #write .md-search-select {
+        background: #db4d5270;
+        border: 1px solid #9292928f;
+        padding: 0 1px;
+    }
+
+    #write pre[lang="mermaid"] .md-diagram-panel {
+        border-color: #0000001a;
+    }
+
+    #write pre[lang="mermaid"] tspan {
+        fill: #333;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="graph"] path.path ~ defs marker {
+        fill: #333;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="graph"] .cluster rect {
+        fill: transparent !important;
+        stroke: #0000001a !important;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section1 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section2 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section3 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section4 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section5 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section6 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section7 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section8 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section9 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section10 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section11 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section12 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section13 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section14 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section15 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section16 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section17 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section18 {
+        fill: #ddd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .section19 {
+        fill: transparent;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .task {
+        fill: #bfbee2;
+        stroke: #9d9bce;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .task[class*="done"] {
+        fill: #d5d5d5;
+        stroke: #929292;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .task[class*="active"] {
+        fill: #bcc0ff;
+        stroke: #7f7ccd;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .task[class*="crit"] {
+        fill: #ebb5bd;
+        stroke: #d45c62;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .task[class*="Crit"] {
+        stroke: #d45c62;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] text {
+        fill: #333;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] text[class*="activeText"], #write pre[lang="mermaid"][mermaid-type="gantt"] text[class*="activeCritText"] {
+        fill: #333 !important;
+        font-weight: bold;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] text[class*="doneText"], #write pre[lang="mermaid"][mermaid-type="gantt"] text[class*="doneCritText"] {
+        fill: #b4b4b4 !important;
+    }
+
+    #write pre[lang="mermaid"][mermaid-type="gantt"] .grid .tick line {
+        stroke: #333;
+    }
+
+    .modal-content .modal-header, .modal-content .modal-footer {
+        border-color: #b4b4b4;
+    }
+
+    .modal-content input, .modal-content button.btn-default {
+        border-color: #b4b4b4;
+    }
+
+    .modal-content input {
+        background: transparent;
+    }
+
+    #typora-quick-open {
+        top: 32px;
+        width: 40%;
+        min-width: 420px;
+        transform: translateX(-50%);
+        margin-left: 0;
+    }
+
+    .mac-seamless-mode #typora-quick-open {
+        top: 50px;
+    }
+
+    #typora-quick-open #typora-quick-open-input input {
+        border-color: #db4d52;
+    }
+
+    #typora-quick-open .ty-quick-open-category-list-inner {
+        position: relative;
+    }
+
+    #typora-quick-open .ty-quick-open-category-title {
+        height: auto;
+        padding-top: 4px;
+        padding-left: 12px;
+    }
+
+    #typora-quick-open .typora-quick-open-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 2px;
+        cursor: pointer;
+    }
+
+    #typora-quick-open .typora-quick-open-item:not(.active):hover {
+        background: #23242b;
+    }
+
+    #typora-quick-open .typora-quick-open-item.active:before {
+        content: '⟩';
+        position: absolute;
+        left: 8px;
+        font-weight: bold;
+        padding-bottom: 5px;
+    }
+
+    #typora-quick-open .typora-quick-open-item-path {
+        margin-top: -2px;
+    }
+
+    #toc-dropmenu {
+        padding: .25em 0;
+        background: #fbfbfb;
+    }
+
+    #toc-dropmenu .outline-title-divider {
+        display: none;
+    }
+
+    .outline-label:hover {
+        text-decoration: none;
+    }
+
+    .ty-tooltip {
+        background: #fbfbfb;
+        color: #333;
+        border-color: #00000040;
+    }
+
+    .code-tooltip.md-f-tooltip, .code-tooltip.md-f-tooltip .md-arrow::after {
+        background: #222 !important;
+        color: #f0f0f0 !important;
+    }
+
+    .code-tooltip.md-f-tooltip a {
+        color: #db4d52;
+    }
+
+    .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container), .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) *, .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) ol, .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) ul {
+        color: #b4b4b4 !important;
+    }
+
+    .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) img, .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) .md-footnote, .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) .md-emoji {
+        opacity: .5;
+    }
+
+    .on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) mark {
+        background: #ddd;
+    }
+
+    .on-focus-mode blockquote .md-end-block:not(.md-focus):not(.md-focus-container)::before {
+        opacity: .5;
+    }
+
+    .on-focus-mode li:not(.md-focus-container)::before {
+        opacity: .5;
+    }
+
+    #typora-sidebar {
+        border-right: 1px solid #19191c;
+    }
+
+    #typora-sidebar .sidebar-tabs {
+        font-family: 'Adelle', 'Times New Roman', serif;
+        border-bottom: 1px solid #19191c;
+    }
+
+    #typora-sidebar .file-list-item-file-name {
+        font-family: 'Adelle', 'Times New Roman', serif;
+        font-size: 1.2em;
+    }
+
+    #typora-sidebar #file-library-search-input {
+        background: #2e3235;
+    }
+
+    #typora-sidebar #file-library-search .file-list-item-file-name {
+        font-size: 1.1rem;
+    }
+
+    #typora-sidebar #file-library-search .ty-search-item.active {
+        background: #23242b;
+    }
+
+    #typora-sidebar .file-list-item-summary,
+    #typora-sidebar .ty-search-item-line {
+        font-family: 'Avenir Next LT Pro', 'Lato', sans-serif;
+    }
+
+    #typora-sidebar .ty-file-search-match-text,
+    #typora-sidebar .ty-outline-hit {
+        font-weight: bold;
+        background: transparent;
+    }
+
+    #typora-sidebar #outline-content {
+        line-height: 1.4em;
+    }
+
+    #typora-sidebar #outline-content .outline-h1 > .outline-item {
+        font-family: 'Adelle', 'Times New Roman', serif;
+    }
+
+    #typora-sidebar #outline-content .outline-h1 > .outline-item {
+        padding-left: 0em;
+    }
+
+    #typora-sidebar #outline-content .outline-h2 > .outline-item {
+        padding-left: 0.75em;
+    }
+
+    #typora-sidebar #outline-content .outline-h3 > .outline-item {
+        padding-left: 1.5em;
+    }
+
+    #typora-sidebar #outline-content .outline-h4 > .outline-item {
+        padding-left: 2.25em;
+    }
+
+    #typora-sidebar #outline-content .outline-h5 > .outline-item {
+        padding-left: 3em;
+    }
+
+    #typora-sidebar #outline-content .outline-h6 > .outline-item {
+        padding-left: 3.75em;
+    }
+
+    #typora-sidebar #outline-content .outline-item:hover {
+        background: #202020;
+    }
+
+    #typora-sidebar .outline-title-wrapper,
+    #typora-sidebar .outline-item-wrapper.outline-h1 > .outline-item {
+        font-family: 'Adelle', 'Times New Roman', serif;
+    }
+
+    #typora-sidebar .file-library-node,
+    #typora-sidebar .file-library-node .file-node-background {
+        transition: background .4s;
+    }
+
+    #typora-sidebar .file-tree-node {
+        padding-left: .75em;
+    }
+
+    #typora-sidebar .file-tree-node i, #typora-sidebar .file-tree-node span {
+        vertical-align: middle;
+    }
+
+    #typora-sidebar .file-tree-node .file-node-icon, #typora-sidebar .file-tree-node .file-node-title {
+        margin-left: 2px;
+    }
+
+    #typora-sidebar .file-tree-node .file-tree-node:not(.file-library-file-node) > .file-node-content {
+        font-style: italic;
+    }
+
+    #typora-sidebar .file-tree-node.file-node-root > .file-node-content {
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    #typora-sidebar .file-tree-node.file-library-file-node:not(.active):hover .file-node-background,
+    #typora-sidebar .file-list-item.file-library-node:not(.active):hover {
+        background: #202020;
+    }
+
+    #typora-sidebar .file-tree-node.file-library-file-node.active .file-node-background,
+    #typora-sidebar .file-list-item.file-library-file-node.active {
+        border-left: 5px solid #db4d52;
+    }
+
+    #typora-sidebar .blink-area {
+        animation: none;
+    }
+
+    #typora-sidebar #ty-sidebar-footer {
+        border-top: 1px solid #19191c;
+    }
+
+    #typora-sidebar #ty-sidebar-footer .sidebar-footer-item {
+        transition: background .3s;
+    }
+
+    #typora-sidebar #ty-sidebar-footer .sidebar-footer-item:hover {
+        background: #202020;
+    }
+
+    #typora-sidebar #ty-sidebar-footer #sidebar-files-menu .menuitem-group-label {
+        font-style: italic;
+    }
+
+    #typora-sidebar #ty-sidebar-footer #sidebar-files-menu .show + .menuitem-group-label.show {
+        border-color: #202020;
+    }
+
+    #typora-sidebar #ty-sidebar-footer #sidebar-files-menu li > a:hover {
+        background: #202020;
+    }
+
+    #typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn {
+        cursor: pointer;
+    }
+
+    #typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active, #typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn:hover {
+        color: #db4d52;
+    }
+
+    #typora-sidebar #ty-sidebar-footer #sidebar-files-menu .ty-side-sort-btn.active {
+        background: #16161a;
+    }
+
+    .dropdown-menu:not(.megamenu-menu-list):not(#sidebar-files-menu) {
+        background: #fbfbfb;
+        color: #333;
+    }
+
+    .dropdown-menu:not(.megamenu-menu-list):not(#sidebar-files-menu) .divider {
+        border-color: #e6e6e6;
+    }
+
+    .dropdown-menu:not(.megamenu-menu-list):not(#sidebar-files-menu) .active a,
+    .dropdown-menu:not(.megamenu-menu-list):not(#sidebar-files-menu) .has-extra-menu.active a {
+        background: #e6e6e6 !important;
+    }
+
+    .dropdown-menu:not(.megamenu-menu-list):not(#sidebar-files-menu) .has-btn-submenu .menu-style-btn.active {
+        background: #333;
+        color: #fbfbfb;
+        cursor: pointer;
+    }
+
+    #footer-word-count-info .ty-footer-word-count-all tr:hover,
+    #ty-spell-check-dict-missing-menu li:hover {
+        background: #e6e6e6 !important;
+    }
+
+    .ty-spell-check-panel-item.ty-active, .ty-spell-check-panel-item:hover {
+        background: #e6e6e6 !important;
+    }
+
+    .btn-default:hover {
+        background: #ddd;
+    }
+
+    footer.ty-footer {
+        border-top: 0;
+    }
+
+    .typora-sourceview-on #toggle-sourceview-btn {
+        background: #fbfbfb;
+    }
+
+    .footer-item:hover {
+        background: #e6e6e6 !important;
+    }
+
+    #outline-btn:hover {
+        color: inherit;
+    }
+
+    .form-control:focus {
+        border-color: #db4d52;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 2px #db4d52;
+    }
+
+    .megamenu-opened header {
+        background-image: none;
+    }
+
+    #top-titlebar, #top-titlebar * {
+        color: inherit;
+    }
+
+    #megamenu-content {
+        padding-top: 28px;
+        background: #fbfbfb;
+        color: #333;
+    }
+
+    #megamenu-content .long-btn {
+        border-color: #9292928f;
+        transition: border-color .4s;
+    }
+
+    #megamenu-content .long-btn:hover {
+        border-color: #db4d52;
+        background: #eee;
+        color: inherit !important;
+    }
+
+    #megamenu-menu-panel:not(:first-of-type) {
+        margin-top: 48px;
+    }
+
+    #recent-file-panel-action-btn {
+        background: inherit;
+        border-color: #9292928f;
+        transition: all .4s;
+    }
+
+    #recent-file-panel-action-btn:hover {
+        border-color: #db4d52;
+        background: #eee;
+        color: inherit;
+    }
+
+    #recent-document-table {
+        background-color: inherit;
+    }
+
+    #recent-file-panel tbody tr:nth-child(2n-1) {
+        background-color: inherit;
+    }
+
+    #recent-file-panel tbody tr:hover {
+        background-color: #eee !important;
+    }
+
+    #recent-file-panel tbody tr:hover td:nth-child(1) {
+        color: inherit;
+    }
+
+    #megamenu-menu-sidebar {
+        background-color: #2e3235;
+        color: #333;
+    }
+
+    .megamenu-menu-header,
+    .megamenu-menu-list li:not(.saved) a {
+        transition: all .4s;
+    }
+
+    .megamenu-menu-header {
+        border-bottom: 1px solid #16161a;
+    }
+
+    .megamenu-menu-header:hover {
+        background: #161819;
+    }
+
+    .megamenu-menu-list li:not(.saved) a:not(.active):hover,
+    .megamenu-menu-list li a.active {
+        background: #101010 !important;
+    }
+
+    #m-saved {
+        background: inherit;
+        color: inherit;
+    }
+
+    #megamenu-menu-list {
+        margin: 0;
+    }
+
+    .theme-preview-div {
+        transition: all .4s;
+    }
+
+    .theme-preview-div:hover {
+        border: 4px solid #be2f34;
+    }
+
+    .theme-preview-div.active, .theme-preview-div.active:hover {
+        border: 4px solid #db4d52;
+    }
+
+    .theme-preview-div.active i {
+        color: #db4d52;
+    }
+
+    .ty-preferences .window {
+        background: #fbfbfb;
+    }
+
+    .ty-preferences .nav-group-item {
+        background: transparent;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .ty-preferences .nav-group-item:not(.active):hover {
+        background: #eee;
+        color: inherit;
+    }
+
+    .ty-preferences .nav-group-item:active, .ty-preferences .nav-group-item.active {
+        background: #ddd;
+        color: inherit;
+    }
+
+    .ty-preferences .btn-default {
+        background: transparent;
+        color: inherit;
+        border-color: #9292928f;
+        cursor: pointer;
+    }
+
+    .ty-preferences .btn-default:hover {
+        border-color: #db4d52;
+        background: #eee !important;
+        color: inherit;
+    }
+
+    .ty-preferences .btn-default:active, .ty-preferences .btn-default.active {
+        background: #ddd;
+    }
+
+    .ty-preferences select,
+    .ty-preferences ul.dropdown-menu {
+        border-color: #9292928f;
+        background: #fbfbfb;
+    }
+
+    .ty-preferences ul.dropdown-menu li {
+        background: #fbfbfb;
+    }
+
+    .ty-preferences ul.dropdown-menu li:hover {
+        background: #eee;
+    }
+
+    .cm-s-typora-default .cm-s-inner.CodeMirror-line {
+        border: 0 !important;
+    }
+
+    #write > p:first-child:empty {
+        position: static;
+    }
+
+    #write > p:first-child:not(:only-child)::before, #write > p:only-child::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("file:///C://Users//life//AppData//Roaming//Typora/themes/ursine/night.png") no-repeat 45% 90% transparent;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        opacity: 0;
+    }
+
+    #write > p:only-child:empty::before {
+        opacity: 1;
+    }
+
+    @media print {
+        #write ol > li,
+        #write ul > li {
+            color: #333;
+        }
+    }
+
+    /* CodeMirror 3024 Day theme */
+    .cm-s-inner {
+        padding: .25rem;
+        border: 1px solid #0000001a !important;
+        border-radius: .25rem;
+    }
+
+    .cm-s-inner.CodeMirror, .cm-s-inner .CodeMirror-gutters {
+        background-color: #fafafa !important;
+        color: #3a3432 !important;
+        border: none;
+    }
+
+    .cm-s-inner .CodeMirror-gutters {
+        width: 5ch;
+        color: #6d8a88;
+    }
+
+    .cm-s-inner .CodeMirror-cursor {
+        border-left: solid thin #5c5855 !important;
+    }
+
+    .cm-s-inner .CodeMirror-linenumber {
+        width: 4ch !important;
+        color: #807d7c;
+    }
+
+    .cm-s-inner .CodeMirror-line::selection, .cm-s-inner .CodeMirror-line::-moz-selection,
+    .cm-s-inner .CodeMirror-line > span::selection,
+    .cm-s-inner .CodeMirror-line > span::-moz-selection,
+    .cm-s-inner .CodeMirror-line > span > span::selection,
+    .cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+        background: #d6d5d4;
+    }
+
+    .cm-s-inner span.cm-comment {
+        color: #cdab53;
+    }
+
+    .cm-s-inner span.cm-string, .cm-s-inner span.cm-string-2 {
+        color: #f2b01d;
+    }
+
+    .cm-s-inner span.cm-number {
+        color: #a16a94;
+    }
+
+    .cm-s-inner span.cm-variable {
+        color: #01a252;
+    }
+
+    .cm-s-inner span.cm-variable-2 {
+        color: #01a0e4;
+    }
+
+    .cm-s-inner span.cm-def {
+        color: #e8bbd0;
+    }
+
+    .cm-s-inner span.cm-operator {
+        color: #ff79c6;
+    }
+
+    .cm-s-inner span.cm-keyword {
+        color: #db2d20;
+    }
+
+    .cm-s-inner span.cm-atom {
+        color: #a16a94;
+    }
+
+    .cm-s-inner span.cm-meta {
+        color: inherit;
+    }
+
+    .cm-s-inner span.cm-tag {
+        color: #db2d20;
+    }
+
+    .cm-s-inner span.cm-attribute {
+        color: #01a252;
+    }
+
+    .cm-s-inner span.cm-qualifier {
+        color: #50fa7b;
+    }
+
+    .cm-s-inner span.cm-property {
+        color: #01a252;
+    }
+
+    .cm-s-inner span.cm-builtin {
+        color: #50fa7b;
+    }
+
+    .cm-s-inner span.cm-variable-3, .cm-s-inner span.cm-type {
+        color: #ffb86c;
+    }
+
+    .cm-s-inner span.cm-bracket {
+        color: #3a3432;
+    }
+
+    .cm-s-inner span.cm-link {
+        color: #a16a94;
+    }
+
+    .cm-s-inner span.cm-error {
+        background: #db2d20;
+        color: #5c5855;
+    }
+
+    .md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+        background: #e8f2ff;
+    }
+
+    .cm-s-inner .CodeMirror-matchingbracket {
+        text-decoration: underline;
+        color: #a16a94 !important;
+    }
+
+    .cm-s-inner .CodeMirror-selected, .cm-s-inner .CodeMirror-selectedtext {
+        background: #d5e2f4 !important;
+        color: inherit;
+        text-shadow: none;
+    }
+
+    #fences-auto-suggest .active {
+        background: #ddd;
+    }
+
+    #write .code-tooltip {
+        bottom: initial;
+        top: calc(100% - 1px);
+        background: #f7f7f7;
+        border: 1px solid #ddd;
+        border-top: 0;
+    }
+
+    .auto-suggest-container {
+        border-color: #b4b4b4;
+    }
+
+    .auto-suggest-container .autoComplt-hint.active {
+        background: #b4b4b4;
+        color: inherit;
+    }
+
+    table tr:nth-child(2n) {
+        background: #e6e6e6;
+    }
+
+    sup.md-footnote {
+        background: #ddd;
+    }
+
+    #typora-sidebar * {
+        color: #f0f0f0;
+    }
+
+    #typora-sidebar * .file-tree-rename-input {
+        color: #333;
+    }
+
+    #typora-sidebar * code {
+        background: #0000001a;
+        border-color: #ffffff26;
+    }
+
+    #typora-quick-open * {
+        color: #f0f0f0;
+    }
+
+    #typora-quick-open input {
+        color: #333;
+    }
+
+    #megamenu-menu-sidebar {
+        color: #f0f0f0 !important;
+    }
+
+    .megamenu-menu-list li:not(.saved) a:not(.active):hover,
+    .megamenu-menu-list li a.active {
+        color: #f0f0f0 !important;
+    }
+
+    #write > p:first-child:not(:only-child)::before, #write > p:only-child::before {
+        background: url("file:///C://Users//life//AppData//Roaming//Typora/themes/ursine/day.png") no-repeat 55% 90% transparent;
+        background-size: cover;
+    }
+
+
+    </style>
+</head>
+<body class='typora-export os-windows'>
+<div id='write' class='is-node'><p><img
+        src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/20200629181240.png"
+        referrerpolicy="no-referrer" alt="NetWork">
+    <!-- more --></p>
+    <p><a href='https://blog.csdn.net/shuningzhang/article/details/90138425'><span>interview_1</span></a></p>
+    <h2><a name="一tcpip网络模型" class="md-header-anchor"></a><span>一、TCP/IP网络模型</span></h2>
+    <table>
+        <tbody>
+        <tr>
+            <th>OSI</th>
+            <th>TCP/IP</th>
+            <th>功能</th>
+            <th>TCP/IP协议簇</th>
+        </tr>
+        <tr>
+            <td>
+                应用层<br>
+                表示层<br>
+                会话层<br>
+            </td>
+            <td>应用层</td>
+            <td>
+                文件传输，电子邮件，文件服务<br>
+                数据格式化，数据加密<br>
+                接触或建立与别的结点的连接<br>
+            </td>
+            <td>
+                TFTP，HHTP，SMTP,FTP,DNS
+            </td>
+        </tr>
+        <tr>
+            <td>传输层</td>
+            <td>传输层</td>
+            <td>提供端对端的接口</td>
+            <td>TCP,UDP</td>
+        </tr>
+        <tr>
+            <td>网络层</td>
+            <td>网络层</td>
+            <td>为数据包选择路由</td>
+            <td>IP,ICMP,RIP</td>
+        </tr>
+        <tr>
+            <td>
+                数据链路层<br>
+                物理层<br>
+            </td>
+            <td>链路层</td>
+            <td>
+                |传输有错误的帧以及错误检测功能<br>
+                以二进制数据格式在物理媒介上传输数据<br>
+            </td>
+            <td>
+                ARP,SLIP<br>
+                ISO2110,IEEE802<br>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <ol start=''>
+        <li><p><span>物理层</span></p>
+            <ul>
+                <li><p><span>该层为上层协议提供了一个传输数据的可靠物理媒介。简单的说，物理层确保原始数据可在各种物理媒介中传输。</span></p>
+                    <ul>
+                        <li><span>中继器</span></li>
+                        <li><span>集线器</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><p><span>数据链路层</span></p>
+            <ul>
+                <li><p><span>将源自网络层的数据可靠地传输到相邻结点的目标网络层。主要功能有</span><strong><span>将数据融合成数据块（帧），控制帧在物理信道上的传输，处理传输差错，调节发送速率以使与接收方匹配</span></strong><span>。主要作用即：</span><strong><span>物理地址寻址，数据成帧，流量控制，数据的检错，重发</span></strong>
+                </p>
+                    <ul>
+                        <li><span>数据链路层为网络层提供可靠的数据传输</span></li>
+                        <li><span>基本数据的数据单位为帧</span></li>
+                        <li><span>主要的协议：以太网协议</span></li>
+                        <li><span>网桥</span></li>
+                        <li><span>交换机</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><p><span>网络层</span></p>
+            <ul>
+                <li><p>
+                    <span>该层的目的是</span><strong><span>实现两个主机系统之间的数据传输透明</span></strong><span>，具体功能包括</span><strong><span>寻址和路由选择，连接的建立与终止等</span></strong><span>，</span><strong><span>它提供的服务使传输层不需要了解网络层的数据传输和交换技术</span></strong><span>，可简单记为</span><strong><span>路径选择，路由及逻辑寻址</span></strong>
+                </p>
+                    <ul>
+                        <li><p><span>TCP/IP的核心协议————IP协议</span></p>
+                            <ul>
+                                <li><span>功能包括有：无线数据包传输，数据包路由选择，差错控制</span></li>
+                                <li><span>与其配套的协议有：地址解析协议ARP,因特网报文协议ICMP等</span></li>
+                            </ul>
+                        </li>
+                        <li><p><span>网络层负责对子网间的数据包进行路由选择，还可以实现拥塞控制，网际互联</span></p></li>
+                        <li><p><span>基本数据单位为IP数据报</span></p></li>
+                        <li><p><span>路由器</span></p></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><p><span>传输层</span></p>
+            <ul>
+                <li><p>
+                    <span>负责</span><strong><span>将上层数据分段并提供端对端的，可靠或不可靠的传输</span></strong><span>。此外，传输层还要</span><strong><span>处理端到端的差错控制和流量控制</span></strong><span>，其任务是根据通信子网的特性，最佳的利用网络资源，</span><strong><span>为两个端系统的会话层之间，建立，维护和取消阐述连接的功能，负责端对端的可靠信息传输</span></strong><span>，在这一层，信息传送的协议称为</span><strong><span>段</span></strong><span>或者</span><strong><span>报文</span></strong><span>，作用：</span><strong><span>为应用进程之间提供端到端的逻辑通信</span></strong>
+                </p>
+                    <ul>
+                        <li><span>传输层负责</span><strong><span>将上层数据分段并提供端到端，可靠或者不可靠的传输以及端到端的差错控制以及流量控制</span></strong>
+                        </li>
+                        <li><strong><span>TCP协议</span></strong><span>，</span><strong><span>UDP协议</span></strong></li>
+                        <li><span>网关</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><p><span>会话层</span></p></li>
+    </ol>
+    <ul>
+        <li>
+            <span>管理主机之间的</span><strong><span>会话进程</span></strong><span>，负责</span><strong><span>建立、管理、终止进程之间的会话</span></strong><span>，还可利用在数据中插入校验点</span><strong><span>实现数据同步</span></strong>
+        </li>
+    </ul>
+    <ol start='6'>
+        <li><span>表示层</span></li>
+    </ol>
+    <ul>
+        <li>
+            <span>对上层数据或信息进行</span><strong><span>变换</span></strong><span>以保证</span><strong><span>一个主机的信息可以被另外一个主机的应用程序理解</span></strong><span>，包括对数据的</span><strong><span>加密，压缩，格式转换</span></strong><span>等</span>
+        </li>
+    </ul>
+    <ol start='7'>
+        <li><p><span>应用层</span></p>
+            <ul>
+                <li><p><span>最靠近用户的层，</span><strong><span>为用户的应用进程提供网络服务的接口，将用户的操作通过应用进程转换为服务，并匹配一个相应的服务协议发送给传输层</span></strong>
+                </p>
+                    <blockquote><p><span>传输数据时可以只是使用（传输层）协议，但是没有应用层的话便无法识别数据内容。如果要使传输的数据有意义，则必须使用应用层协议。</span></p>
+                    </blockquote>
+                </li>
+            </ul>
+        </li>
+    </ol>
+    <br><br><br>
+    <hr/>
+    <hr/>
+    <br><br><br>
+    <h2><a name="二tcp和udp" class="md-header-anchor"></a><span>二、TCP和UDP</span></h2>
+    <h3><a name="21-tcp和udp的区别" class="md-header-anchor"></a><span>2.1 TCP和UDP的区别</span></h3>
+    <figure>
+        <table>
+            <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th><span>UDP</span></th>
+                <th><span>TCP</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span>是否连接</span></td>
+                <td><span>无连接</span></td>
+                <td><span>有连接</span></td>
+            </tr>
+            <tr>
+                <td><span>是否可靠</span></td>
+                <td><span>不可靠，不使用流量控制和拥塞控制</span></td>
+                <td><span>可靠传输，使用流量控制和拥塞控制</span></td>
+            </tr>
+            <tr>
+                <td><span>是否有序</span></td>
+                <td><span>无序</span></td>
+                <td><span>有序</span></td>
+            </tr>
+            <tr>
+                <td><span>是否有界</span></td>
+                <td><span>有界</span></td>
+                <td><span>无界</span></td>
+            </tr>
+            <tr>
+                <td><span>重传机制</span></td>
+                <td><span>无</span></td>
+                <td><span>超时重传机制，快速重传机制</span></td>
+            </tr>
+            <tr>
+                <td><span>连接对象个数</span></td>
+                <td><span>一对一，一对多，多对一，多对多</span></td>
+                <td><span>一对一</span></td>
+            </tr>
+            <tr>
+                <td><span>传输方式</span></td>
+                <td><span>面向报文</span></td>
+                <td><span>面向数据流</span></td>
+            </tr>
+            <tr>
+                <td><span>首部开销</span></td>
+                <td><span>小，仅8字节</span></td>
+                <td><span>最小20字节，最大60字节</span></td>
+            </tr>
+            <tr>
+                <td><span>适用场景</span></td>
+                <td><span>实时应用（视频会议，直播）</span></td>
+                <td><span>适用于可靠的应用（文件传输）</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </figure>
+    <ul>
+        <li><p><span>是否有界</span></p>
+            <blockquote><p><strong><span>TCP通过字节流传输</span></strong><span>，即TCP将应用程序看成是一连串的无结构的字节流。每个TCP套接口有一个发送缓冲区，如果字节流太长时，TCP会将其拆分进行发送。当字节流太短时，TCP会等待缓冲区中的字节流达到一定程度时再构成报文发送出去，TCP发给对方的数据，对方在收到数据时必须给矛确认，只有在收到对方的确认时，本方TCP才会把TCP发送缓冲区中的数据删除。 而</span><strong><span>UDP传输报文的方式是由应用程序</span></strong><span>控制的，</span><strong><span>应用层</span></strong><span>交给UDP多长的报文，UDP照样发送，</span><strong><span>既不拆分，也不合并，而是保留这些报文的边界</span></strong><span>，即一次发送一个报文。有界与无界之分是根据接收报文来划分的，对于TCP协议，客户端连续发送数据，只要服务端的这个函数的缓冲区足够大，会一次性接收过来，即客户端是分好几次发过来，是有边界的，而服务端却一次性接收过来，所以证明是无边界的；而对于UDP协议，客户端连续发送数据，即使服务端的这个函数的缓冲区足够大，也只会一次一次的接收，发送多少次接收多少次，即客户端分几次发送过来，服务端就必须按几次接收，从而证明，这种UDP的通讯模式是有边界的,</span><strong><span>UDP无缓存服务，信息确认由应用层完成</span></strong><span>。</span>
+            </p></blockquote>
+        </li>
+        <li><p><span>UDP无连接</span><br/><span>首先 UDP 是不需要和 TCP一样在发送数据前进行三次握手建立连接的，想发数据就可以开始发送了。并且也只是数据报文的搬运工，不会对数据报文进行任何拆分和拼接操作。具体来说就是：</span>
+        </p>
+            <blockquote><p><span>在发送端，应用层将数据传递给传输层的 UDP 协议，UDP 只会给数据增加一个 UDP 头标识下是 UDP 协议，然后就传递给网络层了.在接收端，网络层将数据传递给传输层，UDP 只去除 IP 报文头就传递给应用层，不会任何拼接操作</span>
+            </p></blockquote>
+        </li>
+    </ul>
+    <br><br>
+    <hr/>
+    <br><br>
+    <h3><a name="22-tcp特性" class="md-header-anchor"></a><span>2.2 TCP特性</span></h3>
+    <ul>
+        <li><p><a href='https://blog.csdn.net/Cecilia3333/article/details/80358201'><span>TCP的各种机制</span></a></p>
+            <ul>
+                <li><p><span>可靠性</span></p>
+                    <ul>
+                        <li><strong><span>确认应答机制</span></strong><span>（ACK）</span></li>
+                        <li><strong><span>超时重传机制</span></strong></li>
+                        <li><strong><span>校验和</span></strong></li>
+                    </ul>
+                </li>
+                <li><p><span>流量控制</span></p>
+                    <ul>
+                        <li><p><strong><span>滑动窗口机制</span></strong><span>（ARQ)</span></p>
+                            <blockquote><p><span>滑动窗口协议既保证了分组无差错、有序接收，也实现了流量控制。主要的方式就是接收方返回的 ACK 中会包含自己的接收窗口的大小，并且利用大小来控制发送方的数据发送。</span>
+                            </p></blockquote>
+                        </li>
+                    </ul>
+                </li>
+                <li><p><span>拥塞控制</span></p>
+                    <ul>
+                        <li><p><span>防止过多的数据注入到网络中，这样可以使网络中的路由器或链路不致过载</span></p></li>
+                        <li><p><span>具体实现</span></p>
+                            <blockquote><p><strong><span>慢启动</span></strong><span>（Slow Start）发送方维护拥塞窗口变量cwnd，先用小数据试探网络拥塞，没问题后来断加倍.</span>
+                                <strong><span>拥塞避免</span></strong><span>（Congestion voidance）：拥塞窗口缓慢增长，即每经过一个往返时间RTT就把发送方的拥塞窗口cwnd加1</span>
+                                <strong><span>快速重传</span></strong><span>（Fast Retransmit）：快重传要求接收方收到失序报文段后立即发出重复确认（为的是使发送方及早知道有报文段没有到达对方）而不要等到自己发送数据时捎带确认。快重传算法规定，发送方只要一连收到三个重复确认就应当立即重传对方尚未收到的报文段，而不必继续等待设置的重传计时器时间到期。</span>
+                                <strong><span>快速恢复</span></strong><span>（Fast Recovery）：当发送方连续收到三个重复确认时，就把慢开始门限ssthresh门限减半。接下来将cwnd设置为ssthresh的大小，然后执行拥塞避免算法</span>
+                            </p></blockquote>
+                            <ul>
+                                <li><strong><span>捎带应答</span></strong></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <br><br>
+    <hr/>
+    <br><br>
+    <h3><a name="23-tcp连接的建立与终止过程" class="md-header-anchor"></a><span>2.3 TCP连接的建立与终止过程</span></h3>
+    <p><img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/TCP传输过程.png"
+            referrerpolicy="no-referrer" alt="TCP传输过程"></p>
+    <p><img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/20200628132143.png"
+            referrerpolicy="no-referrer" alt="TCP三次握手"></p>
+    <p><img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/20200628132341.png"
+            referrerpolicy="no-referrer" alt="TCP四次挥手"></p>
+    <ul>
+        <li><p><span>TCP为什么要三次握手连接而不是两次    </span></p>
+            <p><strong><span>防止客户端失效的连接请求报文段突然又传到服务器</span></strong>
+                <em><span>例如以下情况如果使用两次握手</span></em><span>：</span></p>
+            <blockquote><p><span>如果客户端向服务器发送第一次连接请求在网络节点上滞留了，没有收到服务器的确认，于是又重新发送了一次连接请求，服务器收到客户端的第二次请求发送确认，则连接建立完成，服务器客户端进行数据传输，传输完成断开连接。此时，</span><strong><span>在网络上滞留的客户端第一次连接请求到达服务器，服务器发送确认连接但是客户端实际上并没有发送请求，因此不会理睬服务器发送的请求。但是服务器认为连接已完成，并等待客户端进行数据传输</span></strong><span>。这样会造成资源的浪费</span>
+            </p></blockquote>
+            <p><em><span>如果采用三次握手的话</span></em><span>：</span></p>
+            <blockquote><p><span>滞留在网络上的客户端第一次请求到达服务器之后，服务器发送确认，但实际上服务器并没有发送请求，因此不会理睬服务器的确认，故不会发送确认，服务器等不到客户端的确认则连接建立失败。这样就防止了客户端失效的连接请求报文段突然又传到服务器</span>
+            </p></blockquote>
+        </li>
+        <li><p><span>TCP连接点的终止为啥是四次挥手而不是三次</span>
+            <img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/四次挥手原因.png"
+                 referrerpolicy="no-referrer" alt="TCP四次挥手原因"></p></li>
+        <li><p><span>TIME_WAIT状态：</span></p>
+            <blockquote><p>
+                <span>主动关闭放进入TIME_WAIT状态后，等待被动连接放发送FIN分节，如果直接关闭的话，系统可能会有一个与主动关闭方相同的新进程与被动连接方进行通讯，造成信息泄露。</span></p>
+            </blockquote>
+        </li>
+    </ul>
+    <br><br><br>
+    <hr/>
+    <hr/>
+    <br><br><br>
+    <p>&nbsp;</p>
+    <h2><a name="三ip-address" class="md-header-anchor"></a><span>三、IP Address</span></h2>
+    <p><img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/IP地址.png"
+            referrerpolicy="no-referrer" alt="IP Address"></p>
+    <h3><a name="31-ip地址的分类" class="md-header-anchor"></a><span>3.1 IP地址的分类</span></h3>
+    <ul>
+        <li><span>A类地址：首位为0，1.0.0.1~127.255.255.254；主机号24位</span></li>
+        <li><span>B类地址：首位为10，128.0.0.1~191.255.255.254；主机号16位</span></li>
+        <li><span>C类地址：首位为110，192.0.0.1~223.255.255.254；主机号8位</span></li>
+        <li><span>D类地址（多播地址，也叫做组播地址）：首位为1110，224.0.0.1~239.255.255.254</span></li>
+        <li><span>E类地址：此类地址是保留地址，首位为11110，240.0.0.1~254.255.255.254</span></li>
+    </ul>
+    <ul>
+        <li><p><span>广播地址</span>
+            <span>广播地址(Broadcast Address)是专门</span><strong><span>用于同时向网络中所有工作站进行发送的一个地址</span></strong><span>。</span>
+        </p>
+            <p><span>在使用TCP/IP 协议的网络中，主机标识段host ID 为全1 的IP 地址为广播地址，广播的分组传送给host ID段所涉及的所有计算机。例如，对于10.1.1.0 （255.255.255.0 ）网段，其广播地址为10.1.1.255 （255 即为2 进制的11111111 ），当发出一个目的地址为10.1.1.255 的分组（封包）时，它将被分发给该网段上的所有计算机。</span>
+            </p>
+            <ul>
+                <li><span>计算广播地址</span>
+                    <span>广播地址：网络地址的主机位全部变成1 ，10011111 即159 即：202.112.14.159</span></li>
+            </ul>
+        </li>
+        <li><p><span>回环地址</span>
+            <span>127.0.0.1，通常被称为本bai地回环地址(Loop back address)，不属于任何一个有类别地址类。它代表设备的本地虚拟接口，所以默认被看作是永远不会宕掉的接口。在windows操作系统中也有相似的定义，所以通常在不安装网卡前就可以ping通这个本地回环地址。</span><strong><span>一般都会用来检查本地网络协议、基本数据接口等是否正常的</span></strong>
+        </p></li>
+    </ul>
+    <br><br>
+    <hr/>
+    <br><br>
+    <h3><a name="32-ip地址的主机id与网络id" class="md-header-anchor"></a><span>3.2 IP地址的主机ID与网络ID</span></h3>
+    <ul>
+        <li><p><strong><span>IP地址=网络地址+主机地址</span></strong></p>
+            <ul>
+                <li><span>计算网络ID：只需要将</span><strong><span>IP地址和子网掩码进行与运算</span></strong><span>，所得结果即为该主机的网络ID</span>
+                </li>
+            </ul>
+            <pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded"
+                 lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div
+                    style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 53px;"><textarea
+                    autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+                    style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+                    class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div
+                    class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll"
+                                                                                      tabindex="-1"><div
+                    class="CodeMirror-sizer"
+                    style="margin-left: 44px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+                    style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div
+                    role="presentation" style="position: relative; outline: none;"><div
+                    class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div
+                    style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"
+                                                                       style=""><div class="CodeMirror-activeline"
+                                                                                     style="position: relative;"><div
+                    class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+                    class="CodeMirror-gutter-background CodeMirror-activeline-gutter"
+                    style="left: -44px; width: 44px;"></div><div
+                    class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                    style="left: 0px; width: 37px;">1</div></div><pre class=" CodeMirror-line "
+                                                                      role="presentation"><span role="presentation"
+                                                                                                style="padding-right: 0.1px;"> &nbsp;  有IP地址192.168.0.1，对应的子网掩码为255.255.255.0；</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">2</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">3</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  将IP地址和子网掩码全部转换成二进制的形式，即IP地址是：11000000.10101000.00000000.00000001 ，子网掩码是：11111111.11111111.11111111.00000000；</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">4</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">5</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  将二进制形式的IP地址和子网掩码进行与运算；</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">6</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                    style="left: 0px; width: 37px;">7</div></div><pre class=" CodeMirror-line "
+                                                                      role="presentation"><span role="presentation"
+                                                                                                style="padding-right: 0.1px;"> &nbsp;  运算结果为11000000.10101000.00000000.00000000，转换为十进制就是192.168.0.0，所以这个主机的网络ID就是192.168.0.0。</span></pre></div></div></div></div></div></div><div
+                    style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 435px;"></div><div
+                    class="CodeMirror-gutters" style="height: 435px;"><div
+                    class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 45px;"></div></div></div></div></pre>
+            <ul>
+                <li>
+                    <span>计算主机ID：只需要将</span><strong><span>子网掩码进行二进制按位取反，再和IP地址进行与运算</span></strong><span>，所得结果即为该主机的主机ID</span>
+                </li>
+            </ul>
+            <pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded"
+                 lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div
+                    style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 53px;"><textarea
+                    autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+                    style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+                    class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div
+                    class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll"
+                                                                                      tabindex="-1"><div
+                    class="CodeMirror-sizer"
+                    style="margin-left: 44px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+                    style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div
+                    role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>9</div></div></div><div
+                    class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div
+                    class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline"
+                                                                              style="position: relative;"><div
+                    class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+                    class="CodeMirror-gutter-background CodeMirror-activeline-gutter"
+                    style="left: -44px; width: 44px;"></div><div
+                    class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                    style="left: 0px; width: 37px;">1</div></div><pre class=" CodeMirror-line "
+                                                                      role="presentation"><span role="presentation"
+                                                                                                style="padding-right: 0.1px;"> &nbsp;  有IP地址192.168.0.1，对应的子网掩码为255.255.255.0；</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">2</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">3</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  将子网掩码转换成二进制的形式，即就是：11111111.11111111.11111111.00000000；</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">4</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">5</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  将子网掩码进行二进制按位取反，即就是：00000000.00000000.00000000.11111111;</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">6</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">7</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  将取反后的子网掩码和IP地址的二进制形式进行与运算；</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">8</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                    style="left: 0px; width: 37px;">9</div></div><pre class=" CodeMirror-line "
+                                                                      role="presentation"><span role="presentation"
+                                                                                                style="padding-right: 0.1px;"> &nbsp;  结果为：00000000.00000000.00000000.00000001,转换为十进制就是0.0.0.1,所以这个主机的网络ID就是192.168.0.0。</span></pre></div></div></div></div></div></div><div
+                    style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 512px;"></div><div
+                    class="CodeMirror-gutters" style="height: 512px;"><div
+                    class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 45px;"></div></div></div></div></pre>
+            <ul>
+                <li><span>主机数</span>
+                    <span>主机号有5位，那么这个地址中，就只能有25−2=3025−2=30个主机</span>
+                    <span>因为其中全0作为网络地址，全1作为广播地址</span></li>
+            </ul>
+        </li>
+    </ul>
+    <br><br>
+    <hr/>
+    <br><br>
+    <h3><a name="33-子网划分httpsblogcsdnnetgui951753articledetails79412524"
+           class="md-header-anchor"></a><span>3.3 </span><a
+            href='https://blog.csdn.net/gui951753/article/details/79412524'><span>子网划分</span></a></h3>
+    <ul>
+        <li><p><span>为什么进行子网划分</span></p>
+            <ul>
+                <li><strong><span>减少网络流量</span></strong></li>
+                <li><strong><span>优化网络性能</span></strong><span>，这是减少网络流量的结果。</span></li>
+                <li><strong><span>简化管理</span></strong><span>，与庞大的网络相比，在一系列相连的小网络中找出并隔离网络问题更容易。</span></li>
+                <li><strong><span>有助于覆盖大型地理区域</span></strong><span>，WAN链路比LAN链路的速度慢得多，且更昂贵;单个大跨度的大型网络在前面说的各个方面都可能出现问题（网络流量太大，广播风暴），而将多个小网络连接起来可提高系统的效率。</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+        <li><p><span>子网掩码</span>
+            <span>子网掩码(subnet mask)又叫网络掩码、地址掩码、子网络遮罩，它是一种用来指明一个IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码。</span><br><br></p>
+            <p><span>子网掩码不能单独存在，它必须结合IP地址一起使用。子网掩码只有一个作用，就是将某个IP地址划分成网络地址和主机地址两部分。子网掩码是一个32位地址，用于屏蔽IP地址的一部分以区别网络标识和主机标识，并说明该IP地址是在局域网上，还是在远程网上。</span><strong><span>将IP地址和子网掩码换算为二进制，子网掩码连续全1的是网络地址，后面的是主机地址</span></strong><span>。</span><br><br>
+            </p>
+            <p><span>子网掩码——屏蔽一个IP地址的网络部分的“全1”比特模式。对于A类地址来说，默认的子网掩码是255.0.0.0；对于B类地址来说默认的子网掩码是255.255.0.0；对于C类地址来说默认的子网掩码是255.255.255.0。</span><br><br>
+            </p>
+            <ul>
+                <li><span>通过子网掩码，就可以判断两个IP在不在一个局域网内部。</span><br></li>
+                <li><span>子网掩码可以看出有多少位是网络号，有多少位是主机号</span><br><br></li>
+                <li><span>ip段/数字-如192.168.0.1/24是什么意思?</span></li>
+            </ul>
+            <pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded"
+                 lang=""><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang=""><div
+                    style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 53px;"><textarea
+                    autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+                    style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+                    class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div
+                    class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll"
+                                                                                      tabindex="-1"><div
+                    class="CodeMirror-sizer"
+                    style="margin-left: 44px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+                    style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div
+                    role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>13</div></div></div><div
+                    class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div
+                    class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline"
+                                                                              style="position: relative;"><div
+                    class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+                    class="CodeMirror-gutter-background CodeMirror-activeline-gutter"
+                    style="left: -44px; width: 44px;"></div><div
+                    class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                    style="left: 0px; width: 37px;">1</div></div><pre class=" CodeMirror-line "
+                                                                      role="presentation"><span role="presentation"
+                                                                                                style="padding-right: 0.1px;"> &nbsp;  后面这个数字标示了我们的网络号的位数，也就是子网掩码中前多少号为1</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">2</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">3</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  129.168.1.1 /24 这个24就是告诉我们网络号是24位</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">4</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">5</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  也就相当于告诉我们了</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">6</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">7</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  子网掩码是：11111111 11111111 11111111 00000000</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">8</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">9</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  即：255.255.255.0</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                    style="left: 0px; width: 37px;">10</div></div><pre class=" CodeMirror-line "
+                                                                       role="presentation"><span role="presentation"
+                                                                                                 style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">11</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"> &nbsp;  172.16.10.33/27 中的/27</span></pre></div><div
+                    style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">12</div></div><pre
+                    class=" CodeMirror-line " role="presentation"><span role="presentation"
+                                                                        style="padding-right: 0.1px;"><span
+                    cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+                    class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+                    class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                    style="left: 0px; width: 37px;">13</div></div><pre class=" CodeMirror-line "
+                                                                       role="presentation"><span role="presentation"
+                                                                                                 style="padding-right: 0.1px;"> &nbsp;  也就是说子网掩码是255.255.255.224 即27个全1</span></pre></div></div></div></div></div></div><div
+                    style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 435px;"></div><div
+                    class="CodeMirror-gutters" style="height: 435px;"><div
+                    class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 45px;"></div></div></div></div></pre>
+        </li>
+        <li><p><span>网关</span>
+            <span>网关(Gateway)又称网间连接器、协议转换器。</span><strong><span>默认网关在网络层上以实现网络互连</span></strong><span>，是最复杂的网络互连设备，仅用于两个高层协议不同的网络互连。网关的结构也和路由器类似，不同的是互连层。网关既可以用于广域网互连，也可以用于局域网互连。可以是路由器、三层交换机等设备</span><br>
+        </p>
+            <p><strong><span>网关实质上是一个网络通向其他网络的IP地址</span></strong></p></li>
+        <li><p><span>三层交换机</span>
+            <span>组合了集线器、路由器和交换机的功能，具有网络管理的一类设备，可以实现在一个设备中对多个虚拟子网的管理的一类设备</span></p></li>
+    </ul>
+    <br><br><br>
+    <hr/>
+    <br><br><br>
+    <h2><a name="四http和https" class="md-header-anchor"></a><span>四、HTTP和HTTPS</span></h2>
+    <h3><a name="41-http版本" class="md-header-anchor"></a><span>4.1 HTTP版本</span></h3><h4><a name="411-http09"
+                                                                                            class="md-header-anchor"></a><span>4.1.1 HTTP/0.9</span>
+    </h4>
+    <ul>
+        <li><span>HTTP协议的最初版本，功能简陋，仅支持请求方式GET，并且仅能请求访问HTML格式的资源。</span></li>
+    </ul>
+    <h4><a name="412-http10" class="md-header-anchor"></a><span>4.1.2 HTTP/1.0</span></h4>
+    <ul>
+        <li><p><span>请求行必须在尾部添加协议版本字段（http/1.0）</span></p></li>
+        <li><p><span>必须包含头消息</span></p></li>
+        <li><p><span>在0.9版本上做了进步，增加了请求方式POST和HEAD</span></p></li>
+        <li><p><span>不再局限于0.9版本的HTML格式，根据Content-Type可以支持多种数据格式，即MIME多用途互联网邮件扩展，例如text/html、image/jpeg等</span></p></li>
+        <li><p><span>开始支持cache，就是当客户端在规定时间内访问统一网站，直接访问cache即</span></p></li>
+        <li><p><span>HTTP请求和回应的格式也变了。除了数据部分，每次通信都必须包括头信息（HTTP header），用来描述一些元数据</span></p></li>
+        <li><p><span>新增功能还包括状态码（status code）、多字符集支持、多部分发送（multi-part type）、权限（authorization）、缓存（cache）、内容编码（content encoding）等。</span>
+        </p></li>
+        <li><p><span>1.0版本的工作方式是每次TCP连接只能发送一个请求，当服务器响应后就会关闭这次连接，下一个请求需要再次建立TCP连接，就是不支持keepalive</span></p></li>
+        <li><p><span>TCP连接的新建成本很高，因为需要客户端和服务器三次握手，并且开始时发送速率较慢（slow start）。所以，HTTP 1.0版本的性能比较差。随着网页加载的外部资源越来越多，这个问题就愈发突出了。为了解决这个问题，有些浏览器在请求时，用了一个非标准的Connection字段。</span>
+        </p></li>
+        <li><p><span>HTTP/1.0与HTTP/1.1对比</span></p>
+            <ul>
+                <li><p><span>可扩展性</span></p></li>
+                <li><p><span>HTTP/1.1在消息中增加版本号，用于兼容性判断。</span></p></li>
+                <li><p><span>新增了请求方式PUT、PATCH、OPTIONS、DELETE等。</span></p></li>
+                <li><p><span>带宽优化</span></p>
+                    <blockquote><p><span>HTTP/1.0中，存在一些浪费带宽的现象，例如客户端只是需要某个对象的一部分，而服务器却将整个对象送过来了。例如，客户端只需要显示一个文档的部分内容，又比如下载大文件时需要支持断点续传功能，而不是在发生断连后不得不重新下载完整的包。</span>
+                    </p></blockquote>
+                    <blockquote><p><span>HTTP/1.1中在请求消息中引入了range头域，它允许只请求资源的某个部分。在响应消息中Content-Range头域声明了返回的这部分对象的偏移值和长度。如果服务器相应地返回了对象所请求范围的内容，则响应码为206（Partial Content），它可以防止Cache将响应误以为是完整的一个对象。</span>
+                    </p></blockquote>
+                    <blockquote><p><span>另外一种情况是请求消息中如果包含比较大的实体内容，但不确定服务器是否能够接收该请求（如是否有权限）， 此时若贸然发出带实体的请求，如果被拒绝也会浪费带宽。HTTP/1.1 加入了一个新的状态码100（Continue）。客户端事先发送一个只带头域的请求，如果服务器因为权限拒绝了请求，就回送响应码401（Unauthorized）；如果服务器接收此请求就回送响应码100，客户端就可以继续发送带实体的完整请求了。</span>
+                    </p></blockquote>
+                    <blockquote><p><span>注意，HTTP/1.0 的客户端不支持100响应码。但可以让客户端在请求消息中加入Expect头域，并将它的值设置为100-continue。节省带宽资源的一个非常有效的做法就是压缩要传送的数据。Content-Encoding是对消息进行端到端（end-to-end）的编码，它可能是资源在服务器上保存的固有格式（如 jpeg 图片格式）；在请求消息中加入Accept-Encoding头域，它可以告诉服务器客户端能够解码的编码方式。</span>
+                    </p></blockquote>
+                </li>
+                <li><p><span>长连接和短连接</span></p>
+                    <blockquote><p>
+                        <strong><span>HTTP1.1默认保持长连接</span></strong><span>（HTTP persistent connection，也翻译为</span><strong><span>持久连接</span></strong><span>），</span><strong><span>数据传输完成了保持TCP连接不断开</span></strong><span>（不发RST包、不四次握手），</span><strong><span>等待在同域名下继续用这个通道传输数据</span></strong><span>；(</span><strong><span>管道机制</span></strong><span>)</span>
+                    </p></blockquote>
+                    <blockquote><p><span>相反的就是短连接。</span><strong><span>在 HTTP/1.0 中，默认使用的是短连接</span></strong><span>。也就是说，</span><strong><span>浏览器和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接</span></strong><span>。</span>
+                    </p></blockquote>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h4><a name="413-http20-2015年5月以rfc-7540正式发表）" class="md-header-anchor"></a><span>4.1.3 HTTP/2.0 （2015年5月以RFC 7540正式发表）</span>
+    </h4>
+    <p><span>为了解决1.1版本利用率不高的问题，基于SPDY协议提出了HTTP/2.0版本。</span></p>
+    <ul>
+        <li><span>增加双工模式，即不仅客户端能够同时发送多个请求，服务端也能同时处理多个请求，解决了队头堵塞的问题（HTTP2.0使用了多路复用的技术，做到同一个连接并发处理多个请求，而且并发请求的数量比HTTP1.1大了好几个数量级）</span>
+        </li>
+        <li><span>之前HTTP版本请求和响应中，状态行和请求/响应头都是些信息字段，并没有真正的数据，因此在2.0版本中将所有的信息字段建立一张表，为表中的每个字段建立索引，客户端和服务端共同使用这个表，他们之间就以索引号来表示信息字段，这样就避免了1.0旧版本的重复繁琐的字段，并以压缩的方式传输，提高利用率</span>
+        </li>
+        <li><span>另外也增加服务器推送的功能，即不经请求服务端主动向客户端发送数据。</span></li>
+    </ul>
+    <h4><a name="414-http30" class="md-header-anchor"></a><span>4.1.4 HTTP3.0 </span></h4>
+    <ul>
+        <li><p><span>基于QUIC协议传输</span></p></li>
+        <li><p><span>TTP的范例和概念没有改变。它含有头部（header）和正文（body），请求和回复，还有动词（verb）、Cookie和缓存。HTTP/3的</span><strong><span>主要改变是将这些报文比特传送到另一端的方式</span></strong><span>。</span>
+            <span>为了使HTTP可以通过QUIC传输，协议的某些方面要进行修改，修改的结果便是HTTP/3。这些必要修改是因QUIC与TCP在某些性质上的不同所致，修改包括：     </span></p>
+            <ul>
+                <li><span>在QUIC中，数据流由传输层本身提供，而在HTTP/2中，流由HTTP层完成。     </span></li>
+                <li><span>由于数据流互相独立，HTTP/2中使用的头部压缩算法如果不做改动，会造成队头阻塞。  </span></li>
+                <li><span>QUIC流与HTTP/2略有不同。本书的HTTP/3章节会做详细介绍。</span></li>
+            </ul>
+        </li>
+    </ul>
+    <br><br>
+    <hr/>
+    <br><br>
+    <h3><a name="42-http请求与响应过程" class="md-header-anchor"></a><span>4.2 HTTP请求与响应过程</span></h3>
+    <p><img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/20200628170939.png"
+            referrerpolicy="no-referrer" alt="HTTP请求和响应过程"></p>
+    <ul>
+        <li><p><span>forward和redirect </span></p>
+            <ul>
+                <li><span>forward（</span><strong><span>转发</span></strong><span>）:服务器请求资源，</span><strong><span>服务器直接访问目标地址URL</span></strong><span>，把那个URL的响应内容读取过来然后发送给浏览器浏览器不知道服务器发送的数据从哪里来的，所以</span><strong><span>地址栏中的地址还是原来的地址</span></strong><span>。</span>
+                </li>
+                <li>
+                    <span>redirect（</span><strong><span>重定向</span></strong><span>）:服务端根据逻辑发送一个状态码，告诉</span><strong><span>浏览器去请求那个地址</span></strong><span>，所以</span><strong><span>地址栏中的地址是目标URL</span></strong><span>。</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <br><br>
+    <hr/>
+    <br><br>
+    <h3><a name="43-在浏览器中输入url到显示页面的过程" class="md-header-anchor"></a><span>4.3 在浏览器中输入url到显示页面的过程</span></h3>
+    <ol start=''>
+        <li><p><strong><span>输入地址</span></strong></p>
+            <blockquote><p><span>当我们开始在浏览器中输入网址的时候，浏览器其实就已经在智能的匹配可能得 url 了，他会从历史记录，书签等地方，找到已经输入的字符串可能对应的 url，然后给出智能提示，让你可以补全url地址。对于 google的chrome 的浏览器，他甚至会直接从缓存中把网页展示出来，就是说，你还没有按下 enter，页面就出来了。</span>
+            </p></blockquote>
+        </li>
+        <li><p><strong><span>浏览器查找域名的 IP 地址</span></strong></p>
+            <blockquote><p>
+                <span>2.1 请求一旦发起，浏览器首先要做的事情就是解析这个域名，一般来说，浏览器会首先</span><strong><span>查看本地硬盘的 hosts</span></strong><span> 文件，看看其中有没有和这个域名对应的规则，如果有的话就直接使用 hosts 文件里面的 ip 地址。</span>
+            </p></blockquote>
+            <blockquote><p><span>2.2 如果在本地的 hosts 文件没有能够找到对应的 ip 地址，浏览器会发出一个 </span><strong><span>DNS请求到本地DNS服务器</span></strong><span>。本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动。</span>
+            </p></blockquote>
+            <blockquote><p><span>2.3 查询你输入的网址的DNS请求到达本地DNS服务器之后，</span><strong><span>本地DNS服务器会首先查询它的缓存记录</span></strong><span>，如果缓存中有此条记录，就可以直接返回结果，此过程是递归的方式进行查询。如果没有，本地DNS服务器还要</span><strong><span>向DNS根服务器进行查询</span></strong><span>。</span>
+            </p></blockquote>
+            <blockquote><p><span>2.4 根DNS服务器没有记录具体的域名和IP地址的对应关系，而是告诉本地DNS服务器，你可以</span><strong><span>到域服务器上去继续查询</span></strong><span>，并给出域服务器的地址。</span><strong><span>这种过程是迭代的过程</span></strong><span>。</span>
+            </p></blockquote>
+            <blockquote><p><span>2.5本地DNS服务器继续向域服务器发出请求，在这个例子中，请求的对象是.com域服务器。.com域服务器收到请求之后，也不会直接返回域名和IP地址的对应关系，而是告诉本地DNS服务器，你的域名的解析服务器的地址。</span>
+            </p></blockquote>
+            <blockquote><p><span>2.6 最后，本地DNS服务器向域名的解析服务器发出请求，这时就能收到一个域名和IP地址对应关系，本地DNS服务器不仅要把IP地址返回给用户电脑，还要把这个对应关系保存在缓存中，以备下次别的用户查询时，可以直接返回结果，加快网络访问。</span>
+            </p></blockquote>
+        </li>
+        <li><p><strong><span>浏览器向 web 服务器发送一个 HTTP 请求</span></strong></p>
+            <blockquote><p>
+                <span>拿到域名对应的IP地址之后，浏览器会以一个随机端口（1024&lt;端口&lt;65535）向服务器的WEB程序（常用的有httpd,nginx等）80端口</span><strong><span>发起TCP的连接请求</span></strong><span>。这个连接请求到达服务器端后（这中间通过各种路由设备，局域网内除外），进入到网卡，然后是进入到内核的TCP/IP协议栈（用于识别该连接请求，解封包，一层一层的剥开），还有可能要经过Netfilter防火墙（属于内核的模块）的过滤，最终到达WEB程序，最终建立了TCP/IP的连接。</span>
+            </p></blockquote>
+        </li>
+        <li><p><strong><span>服务器的永久重定向响应</span></strong></p>
+            <blockquote><p><span>服务器给浏览器响应一个301永久重定向响应，这样浏览器就会访 </span><a href='http://www.google.com/' target='_blank'
+                                                                          class='url'>http://www.google.com/</a><span> 而非 </span><a
+                    href='http://google.com/' target='_blank' class='url'>http://google.com/</a><span> 。为什么服务器一定要重定向而不是直接发送用户想看的网页内容呢？其中一个原因跟搜索引擎排名有关。如果一个页面有两个地址，就像 </span><a
+                    href='http://www.yy.com/' target='_blank' class='url'>http://www.yy.com/</a><span>和</span><a
+                    href='http://yy.com/' target='_blank' class='url'>http://yy.com/</a><span> ，搜索引擎会认为它们是两个网站，结果造成每个搜索链接都减少从而降低排名。而搜索引擎知道301永久重定向是什么意思，这样就会把访问带www的和不带www的地址归到同一个网站排名下。还有就是用不同的地址会造成缓存友好性变差，当一个页面有好几个名字时，它可能会在缓存里出现</span>
+            </p></blockquote>
+        </li>
+        <li><p><strong><span>浏览器跟踪重定向地址</span></strong></p>
+            <blockquote><p><span>现在浏览器知道了 </span><a href='http://www.google.com/' target='_blank' class='url'>http://www.google.com/</a><span> 才是要访问的正确地址，所以它会发送另一个http请求。</span>
+            </p></blockquote>
+        </li>
+        <li><p><strong><span>服务器处理请求</span></strong></p>
+            <blockquote><p><span>经过前面的重重步骤，我们终于将我们的http请求发送到了服务器这里，其实前面的重定向已经是到达服务器了，那么，服务器是如何处理我们的请求的呢？</span></p>
+            </blockquote>
+            <blockquote><p><span>后端从在固定的端口接收到TCP报文开始，它会对TCP连接进行处理，对HTTP协议进行解析，并按照报文格式进一步封装成HTTP Request对象，供上层使用。</span>
+            </p></blockquote>
+            <blockquote><p><span>一些大一点的网站会将你的请求到反向代理服务器中，因为当网站访问量非常大，网站越来越慢，一台服务器已经不够用了。于是将同一个应用部署在多台服务器上，将大量用户的请求分配给多台机器处理。</span>
+            </p></blockquote>
+            <blockquote><p><span>此时，客户端不是直接通过HTTP协议访问某网站应用服务器，而是先请求到Nginx，Nginx再请求应用服务器，然后将结果返回给客户端，这里Nginx的作用是反向代理服务器。同时也带来了一个好处，其中一台服务器万一挂了，只要还有其他服务器正常运行，就不会影响用户使用。</span>
+            </p></blockquote>
+        </li>
+        <li><p><strong><span>服务器返回一个 HTTP 响应</span></strong><span>　</span></p>
+            <blockquote><p><span>经过前面的6个步骤，服务器收到了我们的请求，也处理我们的请求，到这一步，它会把它的处理结果返回，也就是返回一个HTPP响应。</span></p></blockquote>
+            <blockquote><p>
+                <span>HTTP响应与HTTP请求相似，HTTP响应也由3个部分构成，分别是：</span><strong><span>状态行、响应头(Response Header)、响应正文</span></strong>
+            </p></blockquote>
+        </li>
+        <li><p><strong><span>浏览器显示 HTML</span></strong></p>
+            <blockquote><p><span>在浏览器没有完整接受全部HTML文档时，它就已经开始显示这个页面了</span></p></blockquote>
+        </li>
+    </ol>
+    <br><br>
+    <hr/>
+    <br><br>
+    <h3><a name="44-http传输过程" class="md-header-anchor"></a><span>4.4 HTTP传输过程</span></h3>
+    <p><img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/20200629082216.png"
+            referrerpolicy="no-referrer" alt="HTTP传输过程"></p>
+    <h3><a name="45-报文格式httpsblogcsdnnetaomizearticledetails78609301" class="md-header-anchor"></a><span>4.5 </span><a
+            href='https://blog.csdn.net/aomize/article/details/78609301'><span>报文格式</span></a></h3>
+    <p><a href='https://blog.csdn.net/lyn_00/article/details/84953763'><span>报文格式</span></a><span> </span></p>
+    <figure>
+        <table>
+            <thead>
+            <tr>
+                <th><span>信息</span></th>
+                <th><span>说明</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span>起始行</span></td>
+                <td><span>对报文进行描述</span></td>
+            </tr>
+            <tr>
+                <td><span>头部</span></td>
+                <td><span>向报文中添加了一些附加信息，是一个名/只的列表，头部和协议配合工作，共同决定了客户端和服务器能做什么事情</span></td>
+            </tr>
+            <tr>
+                <td><span>主体</span></td>
+                <td><span>包含数据的主体部分</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </figure>
+    <h4><a name="451-响应报文格式" class="md-header-anchor"></a><span>4.5.1 响应报文格式</span></h4>
+    <p><img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/20200628205247.png"
+            referrerpolicy="no-referrer" alt="请求报文格式"></p>
+    <ul>
+        <li><span>HTTP请求起始行</span></li>
+    </ul>
+    <figure>
+        <table>
+            <thead>
+            <tr>
+                <th><span>方法</span></th>
+                <th><span>说明</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span>GET</span></td>
+                <td><span>请求URL所指的文档</span></td>
+            </tr>
+            <tr>
+                <td><span>POST</span></td>
+                <td><span>从客户端向服务器端发送一些信息</span></td>
+            </tr>
+            <tr>
+                <td><span>HEAD</span></td>
+                <td><span>只请求文档的信息，而不包含文档的内容</span></td>
+            </tr>
+            <tr>
+                <td><span>PUT</span></td>
+                <td><span>从服务器向客户端发送文档</span></td>
+            </tr>
+            <tr>
+                <td><span>TRACE</span></td>
+                <td><span>把到达的请求回送</span></td>
+            </tr>
+            <tr>
+                <td><span>CONNECT</span></td>
+                <td><span>保留</span></td>
+            </tr>
+            <tr>
+                <td><span>OPTION</span></td>
+                <td><span>询问关于可用的选项</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </figure>
+    <ul>
+        <li><p><span>Get和Post的区别 </span></p>
+            <ul>
+                <li><span>GET和POST本质上就是TCP链接，并无差别。但是由于HTTP的规定和浏览器/服务器的限制，导致他们在应用过程中体现出一些不同</span></li>
+                <li><span>GET在浏览器回退时是无害的，而POST会再次提交请求。</span></li>
+                <li><span>GET产生的URL地址可以被Bookmark，而POST不可以。</span></li>
+                <li><span>GET请求会被浏览器主动cache，而POST不会，除非手动设置。</span></li>
+                <li><span>GET请求只能进行url编码，而POST支持多种编码方式。</span></li>
+                <li><span>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。</span></li>
+                <li><span>GET请求在URL中传送的参数是有长度限制的，而POST么有。</span></li>
+                <li><span>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。</span></li>
+                <li><span>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</span></li>
+                <li><span>GET参数通过URL传递，POST放在Request body中。</span></li>
+                <li><span>对于GET方式的请求，浏览器会把http header和data一并发送出去，服务器响应200（返回数据）；</span></li>
+                <li><span>而对于POST，浏览器先发送header，服务器响应100 continue，浏览器再发送data，服务器响应200 ok（返回数据）。</span></li>
+            </ul>
+        </li>
+    </ul>
+    <ul>
+        <li><span>HTTP请求头部</span></li>
+    </ul>
+    <figure>
+        <table>
+            <thead>
+            <tr>
+                <th><span>信息</span></th>
+                <th><span>说明</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span>Accept</span></td>
+                <td><span>指浏览器或其他客户可以接爱的MIME文件格式。可以根据它判断并返回适当的文件格式</span></td>
+            </tr>
+            <tr>
+                <td><span>Accept-Charset</span></td>
+                <td><span>指出浏览器可以接受的字符编码。英文浏览器的默认值是ISO-8859-1</span></td>
+            </tr>
+            <tr>
+                <td><span>Accept-Language</span></td>
+                <td><span>指出浏览器可以接受的语言种类，如en或en-us，指英语</span></td>
+            </tr>
+            <tr>
+                <td><span>Accept-Encoding</span></td>
+                <td><span>指出浏览器可以接受的编码方式。编码方式不同于文件格式，它是为了压缩文件并加速文件传递速度。浏览器在接收到Web响应之后先解码，然后再检查文件格式</span></td>
+            </tr>
+            <tr>
+                <td><span>Cache-Control</span></td>
+                <td><span>设置关于请求被代理服务器存储的相关选项。一般用不到</span></td>
+            </tr>
+            <tr>
+                <td><span>Connection</span></td>
+                <td>
+                    <span>用来告诉服务器是否可以维持固定的HTTP连接。HTTP/1.1使用Keep-Alive为默认值，这样，当浏览器需要多个文件时(比如一个HTML文件和相关的图形文件)，不需要每次都建立连接</span>
+                </td>
+            </tr>
+            <tr>
+                <td><span>Content-Type</span></td>
+                <td><span>用来表名request的内容类型。可以用HttpServletRequest的getContentType()方法取得</span></td>
+            </tr>
+            <tr>
+                <td><span>Cookie</span></td>
+                <td><span>浏览器用这个属性向服务器发送Cookie。Cookie是在浏览器中寄存的小型数据体，它可以记载和服务器相关的用户信息，也可以用来实现会话功能</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </figure>
+    <h4><a name="452-响应报文格式" class="md-header-anchor"></a><span>4.5.2 响应报文格式</span></h4>
+    <p><img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/20200628205343.png"
+            referrerpolicy="no-referrer" alt="响应报文格式"></p>
+    <ul>
+        <li><span>HTTP响应起始行</span></li>
+    </ul>
+    <figure>
+        <table>
+            <thead>
+            <tr>
+                <th><span>方法</span></th>
+                <th><span>说明</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span>Server</span></td>
+                <td><span>给出服务器相关信息</span></td>
+            </tr>
+            <tr>
+                <td><span>Accept-Ranges</span></td>
+                <td><span>服务器将接受请求的字节范围</span></td>
+            </tr>
+            <tr>
+                <td><span>Content-Type</span></td>
+                <td><span>指明媒体类型</span></td>
+            </tr>
+            <tr>
+                <td><span>Content-Encoding</span></td>
+                <td><span>指明编码方案</span></td>
+            </tr>
+            <tr>
+                <td><span>Location</span></td>
+                <td><span>请求客户将请求发送到另一站点</span></td>
+            </tr>
+            <tr>
+                <td><span>Set-Cookie</span></td>
+                <td><span>服务器请求客户保存Cookie</span></td>
+            </tr>
+            <tr>
+                <td><span>Upgrade</span></td>
+                <td><span>指明优先使用的通信协议</span></td>
+            </tr>
+            <tr>
+                <td><span>Public</span></td>
+                <td><span>给出可以支持的文档清单</span></td>
+            </tr>
+            <tr>
+                <td><span>Retry-afer</span></td>
+                <td><span>指明的日期之后，服务器才能使用</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </figure>
+    <ul>
+        <li><p><span>HTTP常见状态码</span></p>
+            <ul>
+                <li><p><span>1开头状态码</span>
+                    <strong><span>表示请求已被接收，继续处理</span></strong></p></li>
+                <li><p><span>2开头状态码</span>
+                    <strong><span>表示成功处理请求的状态代码</span></strong></p>
+                    <ul>
+                        <li><span>200:通常表示服务器成功处理的请求</span></li>
+                    </ul>
+                </li>
+                <li><p><span>3开头状态码</span>
+                    <strong><span>表示要完成请求，需要进一步操作。通常，这些状态代码用来重定向</span></strong></p>
+                    <ul>
+                        <li><span>301:代表永久性转移</span></li>
+                        <li><span>302:代表暂时性转移</span></li>
+                    </ul>
+                </li>
+                <li><p><span>4开头状态代码 </span><strong><span>通常表示请求可能出现错误，妨碍了服务器的处理</span></strong></p>
+                    <ul>
+                        <li><span>400：服务器不理解请求的语法</span></li>
+                        <li><span>403：服务器拒绝请求</span></li>
+                        <li><span>404：服务器找不到请求的网页</span></li>
+                    </ul>
+                </li>
+                <li><p><span>5开头状态码 </span><strong><span>通常表示服务器在处理中这些请求时发生内错误。这些错误可能是服务器本身错误或是请求出错</span></strong></p>
+                    <ul>
+                        <li><span>500(服务器内部错误):服务器遇到错误，无法完成请求</span></li>
+                        <li><span>501(无法实施):服务器不具备完成请求的功能。例如服务器无法识别方法。</span></li>
+                        <li><span>502(错误网关)：服务器作为网关或代理，从上游服务器收到无效响应。</span></li>
+                        <li><span>503(服务不可用):服务器目前无法使用(由于超载或者停机维护)，通常这只是暂时转态。</span></li>
+                        <li><span>504(网关超时):服务器作为网关或者代理，但是没有及时从上游服务器收到请求。</span></li>
+                        <li><span>505(HHTP版本不受支持):服务器不支持请求中所使用的HTTP协议版本</span></li>
+                    </ul>
+                    <blockquote><p><span>重点：</span><strong><em><span>200,304,403,500</span></em></strong></p>
+                    </blockquote>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <br><br>
+    <hr/>
+    <br><br>
+    <h3><a name="46-http与https的区别" class="md-header-anchor"></a><span>4.6 HTTP与HTTPS的区别  </span></h3>
+    <ul>
+        <li><p><span>HTTPS协议需要ca申请证书，一般免费证书较少，所以需要一定费用</span></p></li>
+        <li><p><span>HTTP是超文本协议，信息是明文传输，HTTPS则是具有安全性的ssl加密传输协议</span></p>
+            <ul>
+                <li><span>在HTTP通信中加入了SSL层，通信的数据被加密了，防止被窃取，具体的通信流程如下：</span>
+                    <img src="https://cdn.jsdelivr.net/gh/cloud-r/GitakRepository/static_files/blog/img/HTTPS加密传输.png"
+                         referrerpolicy="no-referrer"></li>
+            </ul>
+        </li>
+        <li><p><span>HTTP和HTTPS使用的是两种完全不同的连接方式，用的端口也不一样，前者是80，后者是443</span></p></li>
+        <li><p><span>HTTP的连接很简单，是无状态的；HTTPS是有SSl+HTTP协议构成的可加密除数，身份认证的网络协议，比HTTP更安全</span></p></li>
+    </ul>
+    <p>&nbsp;</p>
+    <h3><a name="47-https实现原理httpsblogcsdnnetu011547347articledetails83186514"
+           class="md-header-anchor"></a><span>4.7 </span><a
+            href='https://blog.csdn.net/u011547347/article/details/83186514'><span>HTTPS实现原理</span></a></h3>
+    <p>&nbsp;</p>
+    <h3><a name="48-http代理服务器" class="md-header-anchor"></a><span>4.8 HTTP代理服务器</span></h3>
+    <p><span>工作在</span><strong><span>应用层</span></strong><span>，比价耗费资源</span></p>
+    <ul>
+        <li><strong><span>提高访问速度</span></strong><span>：通常代理服务器都设置一个较大的缓冲区，当有外界的信息通过时，同时也将其保存到缓冲区中，当其他用户再访问相同的 信息时，则直接由缓冲区中 取出信息，传给用户，以提高</span>
+            <span>访问速度。</span></li>
+        <li><strong><span>控制对内部资源的访问</span></strong><span>：如某大学FTP（前提是该代理地址在该资源的允许访问范围之 内），使用教育网内地址段免费代理服务器，就可以用于对教育网开放的各类FTP下载上传，以及各类资料查询共享等服务。</span>
+        </li>
+        <li><strong><span>过滤内容</span></strong><span>：例如限制对特定计算机的访问，将一种语言的数据翻译成另一种语言，或是防御代理服务器两边的攻击性访问。</span></li>
+        <li>
+            <strong><span>隐藏真实IP</span></strong><span>：上网者也可以通过代理服务器隐藏自己的IP，免受攻击。但是只一个代 理很难保证安全，更安全的方法是利用特定的工具创建代理链</span>
+        </li>
+        <li><strong><span>突破自身IP访问限制</span></strong><span>：访问国外站点。中国教育网和169网等网络用户可以通过代理访 问国外网站。</span></li>
+        <li><strong><span>突破内容过滤机制限制，访问被过滤网站</span></strong><span>。</span></li>
+    </ul>
+    <br><br><br>
+    <hr/>
+    <hr/>
+    <br><br><br>
+    <h2><a name="附录" class="md-header-anchor"></a><span>附录</span></h2>
+    <h3><a name="1-常用网络测试命令及应用" class="md-header-anchor"></a><span>1. 常用网络测试命令及应用</span></h3><h4><a name="ping命令"
+                                                                                                    class="md-header-anchor"></a><span>ping命令</span>
+    </h4>
+    <pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="ini"><div
+            class="CodeMirror cm-s-inner CodeMirror-wrap" lang="ini"><div
+            style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 53px;"><textarea
+            autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+            style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+            class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler"
+                                                                                 cm-not-content="true"></div><div
+            class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"
+                                                         style="margin-left: 44px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+            style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div
+            role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>10</div></div></div><div
+            class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div
+            class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline"
+                                                                      style="position: relative;"><div
+            class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+            class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -44px; width: 44px;"></div><div
+            class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+            style="left: 0px; width: 37px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span
+            role="presentation" style="padding-right: 0.1px;"><span class="cm-def">Ping [-t] [-a] [-n count] [-l length] [-f] [-i TTL] [-v TOS] [-r count] [-s count] [-j HostList]| [-k HostList] [-w timeout] destination –list</span></span></pre></div><div
+            style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">2</div></div><pre
+            class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span
+            cm-text="">​</span></span></pre></div><div style="position: relative;"><div
+            class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">3</div></div><pre
+            class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span
+            class="cm-def">v-t，不间断地ping指定的主机，直到按“Ctrl+C” 组合键中断为止。</span></span></pre></div><div
+            style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">4</div></div><pre
+            class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span
+            class="cm-def">v-a，指定对目的地IP地址进行反向名称解析。如 果解析成功，将显示相应的主机名。</span></span></pre></div><div
+            style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">5</div></div><pre
+            class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span
+            class="cm-def">v-n count，发送count指定的ECHO数据包数，默认值为4。</span></span></pre></div><div
+            style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">6</div></div><pre
+            class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span
+            class="cm-def">-l length，自定义发送数据包的大小，也就是发送由length指定大小的ECHO数据包，默认为32字节，最 大值是65527字节。</span></span></pre></div><div
+            style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">7</div></div><pre
+            class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span
+            class="cm-def">v-f，指定发送的回响请求消息带有“不要拆分”标志（所在的IP标题设为1）</span></span></pre></div><div
+            style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">8</div></div><pre
+            class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span
+            class="cm-def">v-i TTL，指定发送回响请求消息的IP标题中的TTL字段值。</span></span></pre></div><div style="position: relative;"><div
+            class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 37px;">9</div></div><pre
+            class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span
+            class="cm-def">v-v TOS，指定发送回响请求消息的IP标题中的“服务 类型 (TOS)”字段值，默认值是0。TOS被指定为0到 255的十进制数。</span></span></pre></div><div
+            style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+            style="left: 0px; width: 37px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span
+            role="presentation" style="padding-right: 0.1px;"><span class="cm-def">v-r count，指定IP标题中的“记录路由”选项用于记录由回响请求消息和相应的回响应答消息使用的路径</span></span></pre></div></div></div></div></div></div><div
+            style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 614px;"></div><div
+            class="CodeMirror-gutters" style="height: 614px;"><div class="CodeMirror-gutter CodeMirror-linenumbers"
+                                                                   style="width: 45px;"></div></div></div></div></pre>
+    <ul>
+        <li><p><span>功能</span></p>
+            <ul>
+                <li><span>ping 127.0.0.1：检查TCP/IP是否被正确地安装。 </span></li>
+                <li><span>ping本机IP：ping本地计算机的IP地址，本地计算 机对该ping命令作出应答。如果没有应答，则表示本地 配置或安装存在问题。出现此问题时，局域网用户可断开 网络电缆，然后重新发送该命令。如果网线断开后本命令 正确，则表示另一台计算机可能配置额相同的IP地址。</span>
+                </li>
+                <li><span>ping局域网内其他主机IP：如果收到回送应答，表 明本地网络中的网卡和传输介质运行正确。但如果没有收 到回送应答，那么表示子网掩码不正确或网卡配置错误，或电缆线路有问题。</span>
+                </li>
+                <li><span>ping网关IP：该命令如果应答正确，表示局域网中 的网关路由器正在运行以及能否与本地网络上的本地主机 通讯。</span></li>
+                <li><span>ping远程主机IP：如果收到4个应答，表示成功地 使用了缺省网关。对于拨号上网用户则表示能够成功地访 问Internet。</span></li>
+                <li><span>ping域名：ping域名，如 ping </span><a href='http://www.sina.com.cn' target='_blank' class='url'>www.sina.com.cn</a><span> ，通常是通过DNS服务器进行解析。 如果这里出现故障，则表示DNS服务器的IP地址配置不 正确或DNS服务器有故障。另外，利用该命令可以实现域名对IP地址的转换功能。</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h4><a name="" class="md-header-anchor"></a><span> </span></h4>
+    <pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="ini"><div
+            class="CodeMirror cm-s-inner CodeMirror-wrap" lang="ini"><div
+            style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 53px;"><textarea
+            autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+            style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+            class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler"
+                                                                                 cm-not-content="true"></div><div
+            class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"
+                                                         style="margin-left: 44px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+            style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div
+            role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div
+            class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div
+            class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div
+            class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+            class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -44px; width: 44px;"></div><div
+            class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+            style="left: 0px; width: 37px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span
+            role="presentation" style="padding-right: 0.1px;"><span
+            class="cm-def"> &nbsp;  nslookup www.*.com</span></span></pre></div></div></div></div></div></div><div
+            style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 26px;"></div><div
+            class="CodeMirror-gutters" style="height: 26px;"><div class="CodeMirror-gutter CodeMirror-linenumbers"
+                                                                  style="width: 45px;"></div></div></div></div></pre>
+    <ul>
+        <li><p><span>功能</span></p>
+            <ul>
+                <li><span>nslookup是一个监测网络中DNS服务器是否能正确实现域名解析的命令行 工具。它在 UNIX/Windows NT/2000/XP中均可使用。nslookup必须要 安装了TCP/IP的网络环境中才能使用。</span>
+                </li>
+                <li><span>如果需要对DNS的故障进行排错就必须熟练使用工具nslookup。这个命令 可以指定查询的类型，可以查到DNS记录的生存时间，还可以指定使用哪个DNS服务器进行解释。</span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h4><a name="ipconfig命令" class="md-header-anchor"></a><span>ipconfig命令</span></h4>
+    <pre spellcheck="false" class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="ini"><div
+            class="CodeMirror cm-s-inner CodeMirror-wrap" lang="ini"><div
+            style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 5px; left: 53px;"><textarea
+            autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"
+            style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div
+            class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler"
+                                                                                 cm-not-content="true"></div><div
+            class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"
+                                                         style="margin-left: 44px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+            style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div
+            role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>1</div></div></div><div
+            class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div
+            class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div
+            class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+            class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -44px; width: 44px;"></div><div
+            class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -44px;"><div
+            class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+            style="left: 0px; width: 37px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span
+            role="presentation" style="padding-right: 0.1px;"><span class="cm-def"> &nbsp;  ipconfig [/all /renew [adapter] /release [adapter]] [/flushdns] [/displaydns] [/registerdns] [/showclassid Adapter] [/setclassid Adapter [ClassID]]</span></span></pre></div></div></div></div></div></div><div
+            style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 128px;"></div><div
+            class="CodeMirror-gutters" style="height: 128px;"><div class="CodeMirror-gutter CodeMirror-linenumbers"
+                                                                   style="width: 45px;"></div></div></div></div></pre>
+    <ul>
+        <li><p><span>功能</span></p>
+            <ul>
+                <li><span>ipconfig用于显示当前的TCP/IP网络配置的设置值、刷 新动态主机配置协议（DHCP）和域名系统（DNS）设置。 使用不带参数的ipconfig可以显示所有适配器的IP地址、子网掩码和默认网关。</span>
+                </li>
+                <li><span>ipconfig一般用来检验人工配置的TCP/IP设置是否正确。 如果计算机和所在的局域网使用了动态主机配置协议 （DHCP），这个程序所显示的信息可以让用户了解自己 的计算机是否成功的租用到一个IP地址，如果租用到则可 以了解它目前分配到的具体地址。了解计算机当前的IP地 址、子网掩码和缺省网关实际上是进行测试和故障分析的必要条件。</span>
+                </li>
+            </ul>
+        </li>
+        <li><p><span>范例</span></p>
+            <ul>
+                <li><span>要显示所有适配器的完整TCP/IP配置，键入 </span><code>ipconfig/all。</code></li>
+                <li><span>仅更新“本地连接”适配器的由DHCP分配IP地址 的配置，键入 </span><code>ipconfig /renew &quot;Local Area
+                    Connection&quot;</code></li>
+                <li><span>要在排除DNS的名称解析故障期间清理DNS解析器 缓存，键入</span><code>ipconfig /flushdns</code></li>
+                <li><span>要显示名称以Local开头的所有适配器的DHCP类别 ID，键入</span><code>ipconfig /showclassid Local</code></li>
+                <li><span>要将“本地连接”适配器的DHCP类别ID设置为 TEST，键入</span><code>ipconfig /setclassid &quot;Local Area Connection&quot;
+                    TEST</code></li>
+            </ul>
+        </li>
+    </ul>
+    <hr/>
+    <h3><a name="2-网络流量监视命令" class="md-header-anchor"></a><span>2. 网络流量监视命令</span></h3>
+    <figure>
+        <table>
+            <thead>
+            <tr>
+                <th><span>命令名称</span></th>
+                <th><span>适用的操作系统</span></th>
+                <th><span>功能说明</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span>ping</span></td>
+                <td><span>UNIX/Windows</span></td>
+                <td><span>用于测量往返数据包丢失率</span></td>
+            </tr>
+            <tr>
+                <td><span>bing</span></td>
+                <td><span>UNIX</span></td>
+                <td><span>测量线路的点到点带宽</span></td>
+            </tr>
+            <tr>
+                <td><span>etherfind</span></td>
+                <td><span>UNIX</span></td>
+                <td><span>检查以太网数据包</span></td>
+            </tr>
+            <tr>
+                <td><span>snoop</span></td>
+                <td><span>UNIX</span></td>
+                <td><span>捕获并检查网络数据包</span></td>
+            </tr>
+            <tr>
+                <td><span>tcpdump</span></td>
+                <td><span>UNIX</span></td>
+                <td><span>网络的dumps流量</span></td>
+            </tr>
+            <tr>
+                <td><span>getethers</span></td>
+                <td><span>UNIX</span></td>
+                <td><span>获取一个以太网局域网网段中所有主机的地址</span></td>
+            </tr>
+            <tr>
+                <td><span>iptrace</span></td>
+                <td><span>UNIX</span></td>
+                <td><span>测量网关的性能</span></td>
+            </tr>
+            <tr>
+                <td><span>netstat</span></td>
+                <td><span>UNIX/Windows</span></td>
+                <td><span>显示各种网络相关数据结构的内容</span></td>
+            </tr>
+            <tr>
+                <td><span>arp</span></td>
+                <td><span>UNIX/Windows</span></td>
+                <td><span>显示并修改Internet到Ethernet地址转换表</span></td>
+            </tr>
+            <tr>
+                <td><span>tracert</span></td>
+                <td><span>UNIX/Windows</span></td>
+                <td><span>追踪有路由延迟的目标机的路由</span></td>
+            </tr>
+            <tr>
+                <td><span>route</span></td>
+                <td><span>UNIX/Windows</span></td>
+                <td><span>显示、人工添加和修改路由表项目</span></td>
+            </tr>
+            <tr>
+                <td><span>pathping</span></td>
+                <td><span>UNIX/Windows</span></td>
+                <td><span>显示有关在源和目标主机之间的中间跃点处的网络 滞后和网络丢失的信息</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </figure>
+    <ul>
+        <li><span>其中一个是</span><strong><span>ping</span></strong><span>命令，重复执行大量的ping命令（ICMP回显 请求消息）可测算出接收的成功次数，就可以计算出数据包丢失的百分率。包丢失是一种吞吐量的测算。</span>
+        </li>
+        <li><span>另一个常用的命令是点到点带宽</span><strong><span>bing</span></strong><span>命令，这个命令是以ping 为基础的，通过线路两端发送数据包的大小不同而产生的往返时间差进行计算，可以得出粗略的吞吐量数据。</span>
+        </li>
+        <li><span>其他5个命令可以检查在网络中经过的数据包，分别提供不同的 输出。命令</span><strong><span>etherfind</span></strong><span>、</span><strong><span>snoop</span></strong><span>和</span><strong><span>tcpdump</span></strong><span>把网卡置于混杂模式中（在这种模式中，收集网络中未经处理的数据无需经过任 何过滤）并记录数据。命令</span><strong><span>getethers</span></strong><span>可以得到所有局域网网段 的主机名和以太网地址对。工具</span><strong><span>iptrace</span></strong><span>在UNIX内核中使用 NETMON程序，产生3类输出：IP流量、主机流量矩阵输出和预先定义数据包号的简短取样。</span>
+        </li>
+        <li><strong><span>netstat</span></strong><span>命令可以帮助网络管理员了解网络的整体使用情 况。它可以显示当前正在活动的网络连接的详细信息，例 如，显示网络连接、路由表和网络接口信息，可以统计目前总共有哪些网络连接正在进行。命令格式语法： </span><code>netstat
+            [-a] [-e] [-n] [-o] [-p Protocol] [-r] [-s] [Interval]</code><span>,</span></li>
+        <li><span>使用</span><strong><span>arp</span></strong><span>命令，能够查看本地计算机或另一台计 算机的ARP高速缓存中的当前内容。此外，使用 arp命令，也可以用人工方式输入静态的网卡物 理和IP地址对，使用这种方式为缺省网关和本地 服务器等常用主机进行这项操作，有助于减少网络上的信息量。ARP命令格式：</span><code>arp
+            [-a [InetAddr] [-N IfaceAddr]] [-g [InetAddr] [-N IfaceAddr]] [-d InetAddr [IfaceAddr]] [-s InetAddr
+            EtherAddr [IfaceAddr]]</code></li>
+        <li><strong><span>tracert</span></strong><span>一般用来检测故障的位置，虽然还是不能确定 具体故障原因，但已经能显示问题所在的地方。另外， traceroute命令的功能与tracert相同，二者的差别仅 仅在于tracert命令是用在Windows平台上，而traceroute命令是用在Unix平台和路由器上。</span>
+        </li>
+        <li><strong><span>tracert</span></strong><span>命令用来显示数据包到达目标主机所经过的路径，并 显示到达每个节点的时间。命令格式如下：</span><code>Tracert
+            IP地址或主机名 [-d] [-h maximum_hops] [-j host_list] [-w timeout]</code></li>
+        <li><strong><span>route</span></strong><span>命令用来显示、人工添加和修改路由表项目的。 route命令格式：</span><code>route [-f] [-p]
+            [[print] [add] [change] [delete] [Destination] [mask subnetmask] [Gateway] [metric Metric]] [if
+            Interface]</code></li>
+    </ul>
+    <br><br><br>
+    <ul>
+        <li><span>参考  </span><br/><span>[1]</span><a href='https://blog.csdn.net/liuyanfeier/article/details/52787037'
+                                                     target='_blank' class='url'>https://blog.csdn.net/liuyanfeier/article/details/52787037</a>
+            <span>[2]</span><a href='https://blog.csdn.net/qq_32374237/article/details/86242159' target='_blank'
+                               class='url'>https://blog.csdn.net/qq_32374237/article/details/86242159</a>
+            <span>[3]</span><a href='https://blog.csdn.net/gui951753/article/details/79412524' target='_blank'
+                               class='url'>https://blog.csdn.net/gui951753/article/details/79412524</a>
+            <span>[4]</span><a href='https://blog.csdn.net/lyn_00/article/details/84953763' target='_blank' class='url'>https://blog.csdn.net/lyn_00/article/details/84953763</a>
+            <span>[5]</span><a href='https://blog.csdn.net/moge19/article/details/90050030' target='_blank' class='url'>https://blog.csdn.net/moge19/article/details/90050030</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
